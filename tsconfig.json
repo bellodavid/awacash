@@ -34,9 +34,11 @@
       "components": ["./components"],
       "constant": ["./constant"],
       "core": ["./core"],
+      "data": ["./data"],
       "hooks": ["./hooks"],
       "navigation": ["./navigation"],
       "screens": ["./screens"],
+      "service": ["./service"],
       "store": ["./store"],
       "utils": ["./utils"]
     }

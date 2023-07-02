@@ -43,15 +43,15 @@
     "react-native/sort-styles": [
       "error",
       "asc",
-      {"ignoreClassNames": false, "ignoreStyleProperties": false}
+      { "ignoreClassNames": false, "ignoreStyleProperties": false }
     ],
     "sort-keys": [
       "error",
       "asc",
-      {"caseSensitive": true, "natural": false, "minKeys": 2}
+      { "caseSensitive": true, "natural": false, "minKeys": 2 }
     ],
     "sort-vars": ["error"],
-    "import/extensions": [0, "always", {"ignorePackages": true}],
+    "import/extensions": [0, "always", { "ignorePackages": true }],
     "react/self-closing-comp": [
       "error",
       {
@@ -61,10 +61,10 @@
     ],
     "prettier/prettier": [
       "error",
-      {"endOfLine": "auto"},
-      {"usePrettierrc": true}
+      { "endOfLine": "auto" },
+      { "usePrettierrc": true }
     ],
-    "react/display-name": [0, {"ignoreTranspilerName": true}],
+    "react/display-name": [0, { "ignoreTranspilerName": true }],
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
     "react-native/no-inline-styles": 0,
@@ -72,9 +72,9 @@
     "react-native/no-raw-text": 0,
     "react-native/no-single-element-style-arrays": 0,
     "react/no-unescaped-entities": 0,
-    "import/order": [1, {"newlines-between": "always"}],
-    "import/namespace": [0, {"allowComputed": false}],
-    "react/no-unstable-nested-components": [0, {"allowAsProps": true}]
+    "import/order": [1, { "newlines-between": "always" }],
+    "import/namespace": [0, { "allowComputed": false }],
+    "react/no-unstable-nested-components": [0, { "allowAsProps": true }]
   },
   "settings": {
     "import/resolver": {
