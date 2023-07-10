@@ -6,7 +6,16 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "bundleRelease": "cd android && ./gradlew bundleRelease --warning-mode all --stacktrace",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint"
+    ]
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.8",
