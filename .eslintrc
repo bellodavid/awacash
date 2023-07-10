@@ -24,13 +24,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "react-native",
-    "import",
-    "prettier"
-  ],
+  "plugins": ["react", "@typescript-eslint", "react-native", "import", "prettier"],
   "rules": {
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
@@ -59,11 +53,7 @@
         "html": true
       }
     ],
-    "prettier/prettier": [
-      "error",
-      { "endOfLine": "auto" },
-      { "usePrettierrc": true }
-    ],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }, { "usePrettierrc": true }],
     "react/display-name": [0, { "ignoreTranspilerName": true }],
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,

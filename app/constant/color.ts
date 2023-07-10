@@ -23,27 +23,21 @@ export interface ThemeType {
 }
 
 export const pallets = {
-  azure: '#0085FF',
   black: '#0B0B0B',
+  border: '#E8E8E8',
   buttonInactive: '#0C0D340D', //202030
-  cadet: '#1D3461',
-  cameoPink: '#E6BCCD',
-  carmine: '#D62246',
+  card: '#F3F3F7',
   dark: '#2C363F',
   darkGrey: '#8a8d90',
   green: '#06D6A0', //#00FFDD
   grey: '#CFDBDD', //F4F0EF
   inactive: '#E3E3E3',
-  khaki: '#E8E288',
-  lightGrey: '#F3F3F7',
-  lightOrange: '#FCD0A1',
-  mantis: '#7DCE82',
   notification: '#F79836',
   primary: '#F79836',
   red: '#FF0058', //#A22C29 #A4243B
   secondary: '#4F000B',
+  text: '#0B0B0B',
   transparent: 'transparent',
-  ultraMarine: '#470FF4',
   white: '#FFFFFF',
 };
 //1D3461
