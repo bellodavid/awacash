@@ -1,4 +1,4 @@
-package com.awacash;
+package com.kreateng.awacash;
 
 import android.app.Application;
 import android.content.res.Configuration;
