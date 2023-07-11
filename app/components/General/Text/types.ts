@@ -4,7 +4,7 @@ export type TextStyleType = TextStyle | TextStyle[];
 
 type Variants = 'title' | 'body' | 'reg-400' | 'medium-500' | 'bold-700';
 
-type font = 'DMSansBold' | 'DMSansMedium' | 'DMSansRegular';
+type Font = 'DMSansBold' | 'DMSansMedium' | 'DMSansRegular';
 
 export interface Props extends TextProps {
   children: React.ReactNode;
@@ -19,6 +19,6 @@ export interface Props extends TextProps {
 }
 
 export interface TextStyleProps {
-  fontFamily?: font;
+  fontFamily?: Font;
   fontSize?: number;
 }

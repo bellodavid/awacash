@@ -45,7 +45,7 @@ export default function LoadApp(): JSX.Element | null {
   }
 
   return (
-    <View onLayout={onLayoutRootView}>
+    <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <NavigationContainer {...{ theme }}>
         <SafeAreaProvider>
           {isAuthenticated ? <AppNavigator /> : <AuthNavigator />}

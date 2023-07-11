@@ -1,6 +1,12 @@
 import { StyleSheet, View } from 'react-native';
 
-export default function Home(): JSX.Element {
+import { AppRoutes, RootNavigationProp, TabRoutes } from 'navigation';
+
+export default function Home({
+  navigation: _nav,
+}: RootNavigationProp<AppRoutes, TabRoutes, 'Home'>): JSX.Element {
+  // navigation.navigate('HomeStack', { screen: 'TransferMethod' });
+
   return (
     <View style={styles.container}>
       <View />

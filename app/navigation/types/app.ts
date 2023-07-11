@@ -2,7 +2,7 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 
 export type AppRoutes = {
   TabStack: NavigatorScreenParams<TabRoutes>;
-  //   Dashboard: NavigatorScreenParams<DashboardRoutes>;
+  HomeStack: NavigatorScreenParams<HomeRoutes>;
   //   Account: NavigatorScreenParams<ProfileRoutes>;
 };
 
@@ -11,4 +11,8 @@ export type TabRoutes = {
   Savings: undefined;
   Loans: undefined;
   More: undefined;
+};
+
+export type HomeRoutes = {
+  TransferMethod: undefined;
 };
