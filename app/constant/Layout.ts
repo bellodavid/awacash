@@ -58,10 +58,9 @@ export default {
     xxl2: 40 * 2,
   },
   button: {
-    height: 50,
-    height2: 70,
+    height: 54,
     width: '65%',
-    radius: 10,
+    radius: 8,
   },
   input: {
     height: 50,

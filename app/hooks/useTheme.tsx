@@ -8,7 +8,7 @@ interface Props {
 
 export default function useTheme(): Props {
   const { theme } = useSelector(state => state.theme);
-  const color = colors.dark;
+  const color = colors.light;
 
   return { color, theme };
 }

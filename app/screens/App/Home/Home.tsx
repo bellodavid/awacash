@@ -1,16 +1,31 @@
 import { StyleSheet, View } from 'react-native';
 
 import { AppRoutes, RootNavigationProp, TabRoutes } from 'navigation';
+import { Button, Container } from 'components';
+import { useTheme } from 'hooks';
 
 export default function Home({
-  navigation: _nav,
+  navigation,
 }: RootNavigationProp<AppRoutes, TabRoutes, 'Home'>): JSX.Element {
-  // navigation.navigate('HomeStack', { screen: 'TransferMethod' });
+  const { color } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <View />
-    </View>
+    <Container>
+      <View
+        style={[
+          styles.container,
+          {
+            backgroundColor: color.border,
+          },
+        ]}
+      />
+      <Button
+        label="navigate"
+        onPress={() => {
+          navigation.navigate('MoreStack', { screen: 'BiometricSettings' });
+        }}
+      />
+    </Container>
   );
 }
 

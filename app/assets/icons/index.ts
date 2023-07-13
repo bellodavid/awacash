@@ -1,2 +1,2 @@
 export { default as Icon } from './Icons';
-// export { default as Logo } from './Logo';
+export { default as Logo } from './Logo';

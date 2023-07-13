@@ -1,0 +1,62 @@
+import React from 'react';
+import { StyleSheet, View, ViewProps } from 'react-native';
+
+import Header, { HeaderProps } from './Header';
+
+import { layout } from 'constant';
+import useTheme from 'hooks/useTheme';
+import { useHeaderHeight } from 'hooks';
+
+const { padding: pd } = layout.spacing;
+
+interface ContainerProps extends ViewProps {
+  children?: React.ReactNode;
+  alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline';
+  style?: ViewProps['style'];
+  padding?: number;
+  backgroundColor?: string;
+  topInset?: boolean;
+  header?: boolean;
+  headerOptions?: HeaderProps;
+}
+
+export default function Container({
+  alignItems,
+  children,
+  style,
+  padding = pd,
+  backgroundColor,
+  topInset,
+  header,
+  headerOptions,
+  ...props
+}: ContainerProps): JSX.Element | null {
+  const { color } = useTheme();
+  const { insets } = useHeaderHeight();
+
+  return (
+    <>
+      {header && <Header {...headerOptions} />}
+      <View
+        style={[
+          { padding },
+          style,
+          styles.container,
+          {
+            alignItems,
+            backgroundColor: backgroundColor || color.background,
+          },
+        ]}
+        {...props}>
+        {topInset && !header && <View style={{ backgroundColor, height: insets.top }} />}
+        {children}
+      </View>
+    </>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

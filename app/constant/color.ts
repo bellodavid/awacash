@@ -8,6 +8,7 @@ export interface ThemeType {
   black: value;
   white: value;
   text: value;
+  textSecondary: value;
   background: value;
   card: value;
   notification: value;
@@ -20,6 +21,7 @@ export interface ThemeType {
   dark: value;
   darkGrey: value;
   inputBorder: value;
+  input: value;
 }
 
 export const pallets = {
@@ -30,12 +32,13 @@ export const pallets = {
   dark: '#2C363F',
   darkGrey: '#8a8d90',
   green: '#06D6A0', //#00FFDD
-  grey: '#CFDBDD', //F4F0EF
+  grey: '#BBBBBB', //F4F0EF
+  grey2: '#9A9999', //F4F0EF
   inactive: '#E3E3E3',
-  notification: '#F79836',
-  primary: '#F79836',
+  notification: '#2793EB',
+  primary: '#2793EB',
   red: '#FF0058', //#A22C29 #A4243B
-  secondary: '#4F000B',
+  secondary: '#2AAE74',
   text: '#0B0B0B',
   transparent: 'transparent',
   white: '#FFFFFF',
@@ -48,9 +51,11 @@ const colors: { dark: ThemeType; light: ThemeType } = {
     background: '#04080F', //001427 131515  001427
     border: '#08101F',
     card: '#04080F',
+    input: '#020B13',
     inputBorder: '#ECF6FD',
     modal: '#08101F',
     text: '#DAE3E5',
+    textSecondary: '#5C5C5C',
   },
   light: {
     ...pallets,
@@ -58,9 +63,11 @@ const colors: { dark: ThemeType; light: ThemeType } = {
     background: '#FFFFFF',
     border: '#DFE5E3',
     card: '#FFFFFF',
+    input: '#F4F5F7',
     inputBorder: '#020B13',
     modal: '#FAFAFF',
     text: '#04080F',
+    textSecondary: '#5C5C5C',
   },
 };
 

@@ -98,3 +98,5 @@ type IconName =
   | 'wallet'
   | 'wallet-add'
   | 'warning';
+
+type LogoName = 'logo' | 'logoWhite' | 'logoBlack';
