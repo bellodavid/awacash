@@ -1,0 +1,86 @@
+import { Image, StyleSheet, Switch, View } from 'react-native';
+import { useState } from 'react';
+
+import { Text } from '../General';
+import { Divider } from '../Element';
+
+import { layout, pallets } from 'constant';
+
+const { fonts } = layout;
+
+interface Props {
+  name: string;
+  accountNumber: string;
+  balance: string;
+  width?: number;
+  marginRight?: number;
+}
+
+export default function Account({
+  accountNumber,
+  balance,
+  name,
+  width,
+  marginRight,
+}: Props): JSX.Element | null {
+  const [enabled, setEnabled] = useState(false);
+
+  return (
+    <View style={[styles.container, { marginRight, width }]}>
+      <Text variant="bold-700" color={pallets.white}>
+        {name} - {accountNumber}
+      </Text>
+      <Divider space="l" />
+      <Text size={14} color={pallets.white}>
+        Available Balance
+      </Text>
+      <Text variant="bold-700" size={28} color={pallets.white}>
+        ₦ {enabled ? '******' : `${balance}.00`}
+      </Text>
+      <Divider space="m" />
+      <View style={styles.switchRow}>
+        <Text size={fonts.caption1} color={pallets.white}>
+          {enabled ? 'Show' : 'Hide'} available balance
+        </Text>
+        <Switch
+          trackColor={{
+            false: pallets.grey,
+            true: `${pallets.primary}99`,
+          }}
+          thumbColor={enabled ? pallets.white : pallets.darkGrey}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={() => {
+            setEnabled(prev => !prev);
+          }}
+          value={enabled}
+          style={{ transform: [{ scale: 0.65 }] }}
+        />
+      </View>
+      <Image
+        source={require('../../assets/images/app/card_bg.png')}
+        style={styles.imageBg}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: pallets.primary,
+    borderRadius: 20,
+    overflow: 'hidden',
+    padding: 18,
+    paddingVertical: 24,
+  },
+  imageBg: {
+    ...StyleSheet.absoluteFillObject,
+    height: undefined,
+    width: undefined,
+    zIndex: -10,
+  },
+  switchRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+});

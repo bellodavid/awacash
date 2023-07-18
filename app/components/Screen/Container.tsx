@@ -18,6 +18,7 @@ interface ContainerProps extends ViewProps {
   topInset?: boolean;
   header?: boolean;
   headerOptions?: HeaderProps;
+  paddingHorizontal?: number;
 }
 
 export default function Container({
@@ -29,6 +30,7 @@ export default function Container({
   topInset,
   header,
   headerOptions,
+  paddingHorizontal,
   ...props
 }: ContainerProps): JSX.Element | null {
   const { color } = useTheme();
@@ -39,7 +41,7 @@ export default function Container({
       {header && <Header {...headerOptions} />}
       <View
         style={[
-          { padding },
+          { padding, paddingHorizontal },
           style,
           styles.container,
           {

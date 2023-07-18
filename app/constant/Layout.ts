@@ -20,6 +20,11 @@ const large = width >= 450;
  */
 
 export default {
+  cards: {
+    cardRadius: 8,
+    cardHeight: 175,
+    cardWidth: width - 16 * 4,
+  },
   dimension: {
     isSmallDevice: small,
     isMediumDevice: medium,
@@ -46,7 +51,7 @@ export default {
     caption2: xSmall ? 11 : small ? 11 : 11,
   },
   spacing: {
-    padding: small ? 14 : 20,
+    padding: small ? 14 : 16,
     xs: 4,
     s: 8,
     m: 16,
@@ -68,10 +73,6 @@ export default {
     inputBottom: 15,
     inputRadius: 10,
     borderSize: 1,
-  },
-  cards: {
-    cardHeight: 55,
-    cardRadius: 15,
   },
   misc: {
     icon: 24,
