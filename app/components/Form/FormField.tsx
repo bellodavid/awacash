@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
 import { useFormikContext } from 'formik';
-import { TextInput, TextInputProps } from 'react-native';
+import { TextInput } from 'react-native';
 
-import FormInput from './FormInput';
+import FormInput, { FormInputProps } from './FormInput';
 
 export interface FieldKeys {
   accountNumber: string;
@@ -38,9 +38,14 @@ export interface FieldKeys {
   comment: string;
   transactionDate: string;
   customerId: string;
+  city: string;
+  utilityBill: string;
+  country: string;
+  id: string;
+  idType: string;
 }
 
-interface FormFieldProps extends TextInputProps {
+interface FormFieldProps extends FormInputProps {
   name: keyof FieldKeys;
   label: string;
   labelColor?: string;

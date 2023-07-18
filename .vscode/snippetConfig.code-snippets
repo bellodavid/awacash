@@ -1,22 +1,17 @@
 {
   "Awacash Screen": {
-    "prefix": "awaScreen",
+    "prefix": "awsc", //Screen With Container
     "body": [
       "import { StyleSheet, View } from 'react-native';",
       "",
-      "import { Container, Header } from 'components';",
+      "import { Container } from 'components';",
       "import {} from 'navigation';",
       "",
       "export default function ${TM_FILENAME_BASE}(): JSX.Element {",
       "  return (",
-      "    <>",
-      "      <Header label='$0' />",
-      "      <>",
-      "        <Container>",
-      "          <View style={styles.container} />",
-      "        </Container>",
-      "      </>",
-      "    </>",
+      "    <Container>",
+      "      <View style={styles.container} />",
+      "    </Container>",
       "  );",
       "}",
       "",

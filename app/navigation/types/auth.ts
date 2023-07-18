@@ -15,8 +15,8 @@ type UserParams = Pick<
   'password' | 'confirmPassword' | 'email' | 'phoneNumber'
 >;
 
-type PinParams = Omit<RegisterModel, 'confirmPin' | 'pin'>;
-type ConfirmPinParams = Omit<RegisterModel, 'confirmPin'>;
+// type PinParams = Omit<RegisterModel, 'confirmPin' | 'pin'>;
+// type ConfirmPinParams = Omit<RegisterModel, 'confirmPin'>;
 
 export type AuthRoutes = {
   Welcome: undefined;
@@ -31,8 +31,14 @@ export type AuthRoutes = {
   SignUp: undefined;
   ValidateOTP: { params: UserParams; tokenId: string };
   PersonalDetails: undefined;
-  CreatePin: { params: PinParams };
-  ConfirmPin: { params: ConfirmPinParams };
+  VerifyBVN: undefined;
+  ValidateBVN: undefined;
+  Address: undefined;
+  ValidID: undefined;
+  CaptureDoc: undefined;
+  TakeSelfie: undefined;
+  CreatePin: undefined;
+  ConfirmPin: undefined;
 
   Login: undefined;
   RequestResetOTP: undefined;

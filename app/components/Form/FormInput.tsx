@@ -17,7 +17,7 @@ import { useTheme } from 'hooks';
 const { height, inputRadius, borderSize } = layout.input;
 const { fonts } = layout;
 
-interface Props extends TextInputProps {
+export interface FormInputProps extends TextInputProps {
   label: string;
   value?: string;
   onChangeText?: (text: string) => void;
@@ -29,6 +29,8 @@ interface Props extends TextInputProps {
   valid?: boolean;
   note?: string;
   noteVisible?: boolean;
+  noteColor?: 'text' | 'primary';
+  noteWeight?: 'reg' | 'bold';
   placeholder?: string;
   isLoading?: boolean;
   isError?: boolean;
@@ -38,7 +40,7 @@ interface Props extends TextInputProps {
   editable?: boolean;
 }
 
-const FormInput = forwardRef<TextInput, Props>(function (
+const FormInput = forwardRef<TextInput, FormInputProps>(function (
   {
     label,
     value,
@@ -57,8 +59,10 @@ const FormInput = forwardRef<TextInput, Props>(function (
     noteVisible,
     editable = true,
     placeholder,
+    noteColor,
+    noteWeight,
     ...props
-  }: Props,
+  }: FormInputProps,
   ref,
 ): JSX.Element | null {
   const { color } = useTheme();
@@ -139,7 +143,10 @@ const FormInput = forwardRef<TextInput, Props>(function (
         )}
         {noteVisible && !error && !isError && (
           <View style={styles.note}>
-            <Text variant="bold-700" size={fonts.subhead} color={color.primary}>
+            <Text
+              variant={noteWeight === 'bold' ? 'bold-700' : undefined}
+              size={fonts.subhead}
+              color={noteColor === 'primary' ? color.primary : color.text}>
               {note}
             </Text>
           </View>

@@ -11,8 +11,11 @@ import {
   VirtualScroll,
 } from 'components';
 import { Logo } from 'assets';
+import { AuthRoutes, StackNavigationProps } from 'navigation';
 
-export default function SignUp(): JSX.Element {
+export default function SignUp({
+  navigation,
+}: StackNavigationProps<AuthRoutes, 'SignUp'>): JSX.Element {
   const [showPass, setShowPass] = useState(true);
   const [showConfirm, setShowConfirm] = useState(true);
   const [_params, setParams] = useState({
@@ -42,6 +45,7 @@ export default function SignUp(): JSX.Element {
           onSubmit={values => {
             setParams(values);
             console.log(values);
+            navigation.navigate('PersonalDetails');
           }}>
           <FormField
             label="Email"

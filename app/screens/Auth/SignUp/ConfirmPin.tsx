@@ -1,15 +1,19 @@
-import { StyleSheet, View } from 'react-native';
+import { PinNumpad } from 'components';
+import { AuthRoutes, StackNavigationProps } from 'navigation';
 
-export default function ConfirmPin(): JSX.Element {
+export default function ConfirmPin({
+  navigation,
+}: StackNavigationProps<AuthRoutes, 'ConfirmPin'>): JSX.Element {
   return (
-    <View style={styles.container}>
-      <View />
-    </View>
+    <PinNumpad
+      title="Confirm Transaction Pin"
+      subtitle="Enter your pin"
+      onPinCompleted={pin => {
+        console.log(pin);
+        navigation.navigate('AuthSuccess', {
+          type: 'signup',
+        });
+      }}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
