@@ -1,5 +1,6 @@
 type IconName =
   | 'add'
+  | 'add-circle'
   | 'arrow-down-circle'
   | 'arrow-down-outline'
   | 'arrow-left-outline'
@@ -77,6 +78,7 @@ type IconName =
   | 'personalCard'
   | 'piggy'
   | 'profile-circle'
+  | 'receipt-2'
   | 'receipt-search'
   | 'scan'
   | 'security-safe'
@@ -97,6 +99,7 @@ type IconName =
   | 'verify'
   | 'wallet'
   | 'wallet-add'
-  | 'warning';
+  | 'warning'
+  | 'wifi-square';
 
 type LogoName = 'logo' | 'logoWhite' | 'logoBlack';

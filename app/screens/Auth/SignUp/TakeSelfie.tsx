@@ -1,4 +1,6 @@
 import { StyleSheet, View } from 'react-native';
+// import { Camera, CameraType } from 'expo-camera';
+// import { useState } from 'react';
 
 import { Button, Container, Divider, Text, Title } from 'components';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
@@ -8,6 +10,9 @@ import { pallets } from 'constant';
 export default function TakeSelfie({
   navigation,
 }: StackNavigationProps<AuthRoutes, 'TakeSelfie'>): JSX.Element {
+  // const [type, setType] = useState(CameraType.back);
+  // const [permission, requestPermission] = Camera.useCameraPermissions();
+
   return (
     <Container header>
       <Title title="Take a Selfie" />

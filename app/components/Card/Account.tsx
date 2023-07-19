@@ -5,6 +5,7 @@ import { Text } from '../General';
 import { Divider } from '../Element';
 
 import { layout, pallets } from 'constant';
+import { formatCurrency } from 'utils';
 
 const { fonts } = layout;
 
@@ -14,6 +15,7 @@ interface Props {
   balance: string;
   width?: number;
   marginRight?: number;
+  backgroundColor?: string;
 }
 
 export default function Account({
@@ -22,11 +24,16 @@ export default function Account({
   name,
   width,
   marginRight,
+  backgroundColor,
 }: Props): JSX.Element | null {
   const [enabled, setEnabled] = useState(false);
 
   return (
-    <View style={[styles.container, { marginRight, width }]}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: backgroundColor || pallets.primary, marginRight, width },
+      ]}>
       <Text variant="bold-700" color={pallets.white}>
         {name} - {accountNumber}
       </Text>
@@ -35,7 +42,7 @@ export default function Account({
         Available Balance
       </Text>
       <Text variant="bold-700" size={28} color={pallets.white}>
-        ₦ {enabled ? '******' : `${balance}.00`}
+        {enabled ? '₦******' : formatCurrency(balance)}
       </Text>
       <Divider space="m" />
       <View style={styles.switchRow}>
@@ -66,7 +73,6 @@ export default function Account({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: pallets.primary,
     borderRadius: 20,
     overflow: 'hidden',
     padding: 18,

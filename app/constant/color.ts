@@ -37,12 +37,14 @@ export const pallets = {
   inactive: '#E3E3E3',
   notification: '#2793EB',
   primary: '#2793EB',
+  primaryBlack: '#292D32',
   red: '#FF0058', //#A22C29 #A4243B
   secondary: '#2AAE74',
   text: '#0B0B0B',
   transparent: 'transparent',
   white: '#FFFFFF',
 };
+
 //1D3461
 const colors: { dark: ThemeType; light: ThemeType } = {
   dark: {

@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys */
 import { Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
@@ -20,64 +19,64 @@ const large = width >= 450;
  */
 
 export default {
+  button: {
+    height: 54,
+    radius: 8,
+    width: '65%',
+  },
   cards: {
-    cardRadius: 8,
     cardHeight: 175,
+    cardRadius: 8,
     cardWidth: width - 16 * 4,
   },
   dimension: {
-    isSmallDevice: small,
-    isMediumDevice: medium,
-    isLargeDevice: large,
-    isTinyDevice: xSmall,
-    isPortrait: height > width,
     isLandscape: height < width,
-    isTablet: width >= 450,
+    isLargeDevice: large,
+    isMediumDevice: medium,
     isPhone: width < 450,
+    isPortrait: height > width,
+    isSmallDevice: small,
     isSmallOrTiny: small || xSmall,
+    isTablet: width >= 450,
+    isTinyDevice: xSmall,
   },
   fonts: {
     //fonts
+    body: xSmall ? 14 : small ? 15 : medium ? 16 : 17,
+    callout: xSmall ? 13 : small ? 14 : medium ? 14 : 16,
+    caption1: xSmall ? 11 : small ? 11 : 12,
+    caption2: xSmall ? 11 : small ? 11 : 11,
+    footnote: xSmall ? 12 : small ? 12 : 13,
+    headline: xSmall ? 14 : small ? 15 : medium ? 16 : 17,
     largeTitle: xSmall ? 28 : small ? 30 : 34,
+    subhead: xSmall ? 12 : small ? 13 : medium ? 14 : 15,
     title1: xSmall ? 22 : small ? 24 : 28,
     title2: xSmall ? 20 : small ? 20 : 22,
     title3: xSmall ? 18 : small ? 18 : 20,
-    headline: xSmall ? 14 : small ? 15 : medium ? 16 : 17,
-    body: xSmall ? 14 : small ? 15 : medium ? 16 : 17,
-    callout: xSmall ? 13 : small ? 14 : medium ? 14 : 16,
-    subhead: xSmall ? 12 : small ? 13 : medium ? 14 : 15,
-    footnote: xSmall ? 12 : small ? 12 : 13,
-    caption1: xSmall ? 11 : small ? 11 : 12,
-    caption2: xSmall ? 11 : small ? 11 : 11,
-  },
-  spacing: {
-    padding: small ? 14 : 16,
-    xs: 4,
-    s: 8,
-    m: 16,
-    r: 20,
-    l: 24,
-    xl: 32,
-    xxl: 40,
-    xl2: 32 * 2,
-    xxl2: 40 * 2,
-  },
-  button: {
-    height: 54,
-    width: '65%',
-    radius: 8,
   },
   input: {
-    height: 50,
+    borderSize: 1,
     borderWidth: 1.5,
+    height: 50,
     inputBottom: 15,
     inputRadius: 10,
-    borderSize: 1,
   },
   misc: {
+    boxLayout: 80,
     icon: 24,
     toastHeight: 100,
-    boxLayout: 80,
+  },
+  spacing: {
+    l: 24,
+    m: 16,
+    padding: small ? 14 : 16,
+    r: 20,
+    s: 8,
+    xl: 32,
+    xl2: 32 * 2,
+    xs: 4,
+    xxl: 40,
+    xxl2: 40 * 2,
   },
   window: {
     height,
