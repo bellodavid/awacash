@@ -47,7 +47,12 @@
       </dict>
     </dict>
     <key>NSCameraUsageDescription</key>
-	  <string>${PRODUCT_NAME} needs access to capture a selfie</string>
+    <string>Allow $(PRODUCT_NAME) to use the camera</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to use the microphone</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Give $(PRODUCT_NAME) permission to save photos</string>
+    <key>NSCameraUsageDescription</key>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>
     <key>UIRequiredDeviceCapabilities</key>

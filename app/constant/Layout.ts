@@ -62,8 +62,11 @@ export default {
     inputRadius: 10,
   },
   misc: {
+    avatar: 32,
     boxLayout: 80,
     icon: 24,
+    pagination: 40,
+    pill: 48,
     toastHeight: 100,
   },
   spacing: {

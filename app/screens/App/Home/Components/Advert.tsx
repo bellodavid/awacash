@@ -5,6 +5,8 @@ import { lottie } from 'assets';
 import { layout, pallets } from 'constant';
 import { Divider, Text } from 'components';
 
+const { fonts, spacing } = layout;
+
 export default function Advert(): JSX.Element {
   return (
     <View style={styles.container}>
@@ -13,12 +15,12 @@ export default function Advert(): JSX.Element {
           Cowry App
         </Text>
         <Divider space="t" />
-        <Text color={pallets.white} size={layout.fonts.callout}>
+        <Text color={pallets.white} size={fonts.callout}>
           Want some discount? Download the cowry app to get started.
         </Text>
         <Divider space="s" />
         <TouchableOpacity style={styles.btn}>
-          <Text variant="bold-700" size={layout.fonts.callout}>
+          <Text variant="bold-700" size={fonts.callout}>
             Create Account
           </Text>
         </TouchableOpacity>
@@ -48,15 +50,14 @@ const styles = StyleSheet.create({
   btn: {
     alignSelf: 'flex-start',
     backgroundColor: pallets.white,
-    borderRadius: 8,
-    padding: 8,
+    borderRadius: spacing.s,
+    padding: spacing.s,
   },
   container: {
     backgroundColor: pallets.black,
-    borderRadius: 8,
+    borderRadius: spacing.s,
     flexDirection: 'row',
-    height: 145,
     overflow: 'hidden',
-    padding: 20,
+    padding: spacing.padding,
   },
 });

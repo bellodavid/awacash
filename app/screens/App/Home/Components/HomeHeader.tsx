@@ -5,7 +5,7 @@ import { layout } from 'constant';
 import { Divider, Text } from 'components';
 import { Icon } from 'assets';
 
-const { fonts, spacing } = layout;
+const { fonts, spacing, misc } = layout;
 
 interface Props {
   image?: string | null;
@@ -42,9 +42,9 @@ export default function HomeHeader({ image }: Props): JSX.Element | null {
 
 const styles = StyleSheet.create({
   image: {
-    borderRadius: 20,
-    height: 32,
-    width: 32,
+    borderRadius: misc.avatar / 2,
+    height: misc.avatar,
+    width: misc.avatar,
   },
   row: {
     alignItems: 'center',

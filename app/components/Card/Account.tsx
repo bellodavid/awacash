@@ -73,10 +73,9 @@ export default function Account({
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 20,
+    borderRadius: 16,
     overflow: 'hidden',
-    padding: 18,
-    paddingVertical: 24,
+    padding: 16,
   },
   imageBg: {
     ...StyleSheet.absoluteFillObject,

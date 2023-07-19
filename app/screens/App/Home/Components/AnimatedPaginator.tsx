@@ -22,16 +22,10 @@ function AnimPaginator({ index, translateX }: AnimPaginatorProps): JSX.Element |
     const opacity = interpolate(
       translateX.value,
       inputRange,
-      [0.1, 1, 0.1],
+      [0.25, 1, 0.25],
       Extrapolate.CLAMP,
     );
-
-    const scale = interpolate(
-      translateX.value,
-      inputRange,
-      [1, 1.05, 1],
-      Extrapolate.CLAMP,
-    );
+    const scale = interpolate(translateX.value, inputRange, [1, 1, 1], Extrapolate.CLAMP);
 
     const dotWidth = interpolate(
       translateX.value,

@@ -7,20 +7,22 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { Advert, AnimPaginator, HomeHeader } from './Components';
-import { homeSection } from './Data';
+import { homeSection, transactions } from './Data';
 
 import { AppRoutes, RootNavigationProp, TabRoutes } from 'navigation';
 import { AccountCard, Container, Divider, Text, VirtualScroll } from 'components';
 import { layout, pallets } from 'constant';
-import { loopedColor } from 'utils';
+import { formatCurrency, loopedColor } from 'utils';
 import { Icon, lottie } from 'assets';
+import { useTheme } from 'hooks';
 
-const { cards, spacing, fonts } = layout;
+const { cards, spacing, fonts, misc } = layout;
 
 export default function Home({
   navigation,
 }: RootNavigationProp<AppRoutes, TabRoutes, 'Home'>): JSX.Element {
   const aref = useAnimatedRef<Animated.FlatList<number | null>>();
+  const { color } = useTheme();
   const translateX = useSharedValue(0);
 
   const slides = [1, 2, 3];
@@ -64,7 +66,7 @@ export default function Home({
               <AnimPaginator key={index} {...{ index, translateX }} />
             ))}
           </View>
-          <View style={[styles.section]}>
+          <View style={[styles.section, { paddingTop: 0 }]}>
             <Text variant="bold-700">Quick Link</Text>
             <Divider space="m" />
             <FlatList
@@ -96,10 +98,17 @@ export default function Home({
             <Advert />
           </View>
           <View style={[styles.section]}>
-            <Text variant="bold-700">Transactions</Text>
+            <View style={[styles.row, { justifyContent: 'space-between' }]}>
+              <Text variant="bold-700">Transactions</Text>
+              <TouchableOpacity>
+                <Text variant="medium-500" color={pallets.primary}>
+                  View all
+                </Text>
+              </TouchableOpacity>
+            </View>
             <Divider space="m" />
             <FlatList
-              data={[]}
+              data={transactions}
               ListEmptyComponent={() => (
                 <View style={{ alignItems: 'center' }}>
                   <Lottie
@@ -113,8 +122,49 @@ export default function Home({
                   />
                 </View>
               )}
-              renderItem={() => {
-                return <View />;
+              ItemSeparatorComponent={() => <Divider space="s" />}
+              renderItem={({ item }) => {
+                return (
+                  <TouchableOpacity
+                    disabled
+                    style={[
+                      styles.row,
+                      styles.transactionCard,
+                      { backgroundColor: color.altBG, justifyContent: 'space-between' },
+                    ]}>
+                    <View style={styles.row}>
+                      <Icon
+                        name={
+                          item.type === 'credit' ? 'arrow-down-circle' : 'arrow-up-circle'
+                        }
+                        color={item.type === 'credit' ? pallets.green : pallets.red}
+                      />
+                      <View style={{ marginLeft: 8 }}>
+                        <Text textTransform="capitalize">{item.type}</Text>
+                        <Divider space="t" />
+                        <Text
+                          color={color.darkGrey}
+                          size={fonts.callout}
+                          textTransform="capitalize">
+                          {item.message}
+                        </Text>
+                        <Text
+                          color={color.darkGrey}
+                          size={fonts.callout}
+                          textTransform="capitalize">
+                          {new Date().toLocaleDateString()}
+                        </Text>
+                      </View>
+                    </View>
+                    <View style={{ alignItems: 'flex-end' }}>
+                      <Text size={fonts.callout} variant="bold-700">
+                        {formatCurrency(item.amount)}
+                      </Text>
+                      <Divider space="t" />
+                      <Text size={fonts.callout}>{new Date().toLocaleTimeString()}</Text>
+                    </View>
+                  </TouchableOpacity>
+                );
               }}
             />
           </View>
@@ -128,17 +178,25 @@ const styles = StyleSheet.create({
   pagination: {
     alignItems: 'center',
     flexDirection: 'row',
-    height: 40,
+    height: misc.pagination,
     justifyContent: 'center',
   },
   pill: {
     alignItems: 'center',
-    borderRadius: 28,
-    height: 48,
+    borderRadius: misc.pill / 2,
+    height: misc.pill,
     justifyContent: 'center',
-    width: 48,
+    width: misc.pill,
+  },
+  row: {
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   section: {
+    padding: spacing.padding,
+  },
+  transactionCard: {
+    borderRadius: 16,
     padding: spacing.padding,
   },
 });
