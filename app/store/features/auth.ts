@@ -3,10 +3,10 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 // import { authEndpoints, customerEndpoints } from 'service';
 
 const initialState: AuthState = {
-  balance: null,
+  balance: undefined,
   isAuthenticated: false,
-  token: null,
-  user: null,
+  token: undefined,
+  user: undefined,
 };
 
 const { actions, reducer } = createSlice({

@@ -18,33 +18,42 @@ export default function Divider({ space, horizontal = false }: Props): JSX.Eleme
   const styleProperty = horizontal ? 'marginLeft' : 'marginTop';
 
   switch (space) {
-    case 't':
+    case 't': {
       margin = xs;
       break;
-    case 's':
+    }
+    case 's': {
       margin = s;
       break;
-    case 'm':
+    }
+    case 'm': {
       margin = m;
       break;
-    case 'l':
+    }
+    case 'l': {
       margin = l;
       break;
-    case 'xl':
+    }
+    case 'xl': {
       margin = xl;
       break;
-    case 'xxl':
+    }
+    case 'xxl': {
       margin = xxl;
       break;
-    case 'xl2':
+    }
+    case 'xl2': {
       margin = xl2;
       break;
-    case 'xxl2':
+    }
+    case 'xxl2': {
       margin = xxl2;
       break;
-    default:
+    }
+    default: {
       margin = r;
       break;
+    }
   }
 
   return <View style={{ [styleProperty]: margin }} />;

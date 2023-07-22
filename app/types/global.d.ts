@@ -103,3 +103,10 @@ type IconName =
   | 'wifi-square';
 
 type LogoName = 'logo' | 'logoWhite' | 'logoBlack';
+
+interface PickerItemProps {
+  label: string;
+  value: string;
+  value2?: string;
+  value3?: string;
+}

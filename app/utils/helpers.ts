@@ -9,16 +9,21 @@ type TabIcon = Extract<
 
 export const getTabIcon = (route: RouteProp<TabRoutes, keyof TabRoutes>): TabIcon => {
   switch (route.name) {
-    case 'Home':
+    case 'Home': {
       return 'home';
-    case 'Savings':
+    }
+    case 'Savings': {
       return 'security-safe';
-    case 'Loans':
+    }
+    case 'Loans': {
       return 'wallet';
-    case 'More':
+    }
+    case 'More': {
       return 'menu';
-    default:
+    }
+    default: {
       return 'home';
+    }
   }
 };
 
@@ -32,8 +37,8 @@ export const formatCurrency = (value: number | string): string => {
   }).format(amount);
 };
 
-export const abbreviateString = (str1: string): string => {
-  const split_names = str1.trim().split(' ');
+export const abbreviateString = (string1: string): string => {
+  const split_names = string1.trim().split(' ');
 
   if (split_names.length > 1) {
     return `${split_names[0]?.charAt(0) + '' + split_names[1]?.charAt(0)}`;
@@ -43,7 +48,7 @@ export const abbreviateString = (str1: string): string => {
 
 export const loopedColor = (index: number, colors: string[]): string => {
   const colorLength = colors.length;
-  const bodyNum = index % colorLength;
+  const bodyNumber = index % colorLength;
 
-  return colors[bodyNum] as string;
+  return colors[bodyNumber] as string;
 };

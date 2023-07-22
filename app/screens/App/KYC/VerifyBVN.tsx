@@ -9,11 +9,11 @@ import {
   Submit,
   Title,
 } from 'components';
-import { AuthRoutes, StackNavigationProps } from 'navigation';
+import { KYCRoutes, StackNavigationProps } from 'navigation';
 
 export default function VerifyBVN({
   navigation,
-}: StackNavigationProps<AuthRoutes, 'VerifyBVN'>): JSX.Element {
+}: StackNavigationProps<KYCRoutes, 'VerifyBVN'>): JSX.Element {
   return (
     <Container header>
       <Title title="Verify BVN" subtitle="Please fill this form to verify your BVN." />
@@ -21,8 +21,8 @@ export default function VerifyBVN({
         initialValues={{
           bvn: '',
         }}
-        onSubmit={val => {
-          console.log(val);
+        onSubmit={value => {
+          console.log(value);
           Alert.alert('', 'Receive OTP for BVN verification?', [
             {
               isPreferred: true,

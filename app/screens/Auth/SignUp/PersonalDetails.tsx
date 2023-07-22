@@ -33,7 +33,7 @@ export default function PersonalDetails({
           }}
           onSubmit={values => {
             console.log('🚀 ~ file: PersonalDetails.tsx:41 ~ values:', values);
-            navigation.navigate('VerifyBVN');
+            navigation.navigate('CreatePin');
           }}>
           <FormField
             autoCorrect={false}

@@ -18,14 +18,18 @@ export default function Submit({
 
   const validateBtn = () => {
     switch (validation) {
-      case 'isValid':
+      case 'isValid': {
         return !isValid;
-      case 'dirty':
+      }
+      case 'dirty': {
         return !dirty;
-      case 'dirty & isValid':
+      }
+      case 'dirty & isValid': {
         return !(dirty && isValid);
-      default:
+      }
+      default: {
         return false;
+      }
     }
   };
 

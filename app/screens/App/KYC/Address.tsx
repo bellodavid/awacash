@@ -1,5 +1,4 @@
 import {
-  BottomSheet,
   Container,
   Divider,
   Form,
@@ -9,11 +8,11 @@ import {
   Title,
   VirtualScroll,
 } from 'components';
-import { AuthRoutes, StackNavigationProps } from 'navigation';
+import { KYCRoutes, StackNavigationProps } from 'navigation';
 
 export default function Address({
   navigation,
-}: StackNavigationProps<AuthRoutes, 'Address'>): JSX.Element {
+}: StackNavigationProps<KYCRoutes, 'Address'>): JSX.Element {
   return (
     <>
       <Header />
@@ -55,7 +54,6 @@ export default function Address({
           </Form>
         </Container>
       </VirtualScroll>
-      <BottomSheet />
     </>
   );
 }

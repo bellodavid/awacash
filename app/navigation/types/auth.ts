@@ -31,12 +31,6 @@ export type AuthRoutes = {
   SignUp: undefined;
   ValidateOTP: { params: UserParams; tokenId: string };
   PersonalDetails: undefined;
-  VerifyBVN: undefined;
-  ValidateBVN: undefined;
-  Address: undefined;
-  ValidID: undefined;
-  CaptureDoc: undefined;
-  TakeSelfie: undefined;
   CreatePin: undefined;
   ConfirmPin: undefined;
 

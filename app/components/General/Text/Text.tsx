@@ -22,52 +22,58 @@ export default function Text({
   let textStyle: TextStyleProps = {};
 
   const defaultStyle: TextStyleType = {
-    color: color ? color : colors.text,
-    lineHeight: lineHeight ? lineHeight : undefined,
+    color: color || colors.text,
+    lineHeight: lineHeight || undefined,
   };
 
   switch (variant) {
-    case 'medium-500':
+    case 'medium-500': {
       textStyle = {
         ...defaultStyle,
         fontFamily: 'DMSansMedium',
-        fontSize: size ? size : fonts.subhead,
+        fontSize: size || fonts.subhead,
       };
       break;
-    case 'title':
+    }
+    case 'title': {
       textStyle = {
         ...defaultStyle,
         fontFamily: 'DMSansBold',
-        fontSize: size ? size : fonts.largeTitle,
+        fontSize: size || fonts.largeTitle,
       };
       break;
-    case 'body':
+    }
+    case 'body': {
       textStyle = {
         ...defaultStyle,
         fontFamily: 'DMSansRegular',
         fontSize: fonts.body,
       };
       break;
-    case 'bold-700':
+    }
+    case 'bold-700': {
       textStyle = {
         ...defaultStyle,
         fontFamily: 'DMSansBold',
-        fontSize: size ? size : fonts.body,
+        fontSize: size || fonts.body,
       };
       break;
-    case 'reg-400':
+    }
+    case 'reg-400': {
       textStyle = {
         ...defaultStyle,
         fontFamily: 'DMSansRegular',
-        fontSize: size ? size : fonts.body,
+        fontSize: size || fonts.body,
       };
       break;
-    default:
+    }
+    default: {
       textStyle = {
         ...defaultStyle,
         fontFamily: 'DMSansRegular',
-        fontSize: size ? size : fonts.body,
+        fontSize: size || fonts.callout,
       };
+    }
   }
 
   return (

@@ -74,6 +74,7 @@ export default function Home({
               numColumns={4}
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{ borderWidth: 1 }}
+              // eslint-disable-next-line sonarjs/no-duplicate-string
               columnWrapperStyle={{ justifyContent: 'space-between' }}
               renderItem={({ item }) => {
                 return (

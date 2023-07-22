@@ -32,7 +32,7 @@ export default function Header({
 
   const handleBackIcon = () => navigation.canGoBack() && navigation.goBack();
 
-  const backgroundColor = transparent ? 'transparent' : Color ? Color : color.card;
+  const backgroundColor = transparent ? 'transparent' : Color || color.card;
 
   return (
     <>

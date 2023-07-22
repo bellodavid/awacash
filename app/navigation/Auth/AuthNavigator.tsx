@@ -3,14 +3,12 @@ import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/
 import { AuthRoutes } from '../types';
 
 import {
-  Address,
   AuthSuccess,
   AwacashAccountNo,
   AwacashConfirmPin,
   AwacashCreatePin,
   AwacashPersonalDetails,
   AwacashValidateOTP,
-  CaptureDoc,
   ConfirmPin,
   CreatePin,
   Login,
@@ -18,12 +16,8 @@ import {
   RequestResetOTP,
   ResetPassword,
   SignUp,
-  TakeSelfie,
-  ValidID,
-  ValidateBVN,
   ValidateOTP,
   ValidateResetOTP,
-  VerifyBVN,
   Welcome,
 } from 'screens/Auth';
 
@@ -50,12 +44,6 @@ export default function AuthNavigator(): JSX.Element {
       <Group>
         <Screen name="SignUp" component={SignUp} />
         <Screen name="PersonalDetails" component={PersonalDetails} />
-        <Screen name="Address" component={Address} />
-        <Screen name="TakeSelfie" component={TakeSelfie} />
-        <Screen name="CaptureDoc" component={CaptureDoc} />
-        <Screen name="ValidID" component={ValidID} />
-        <Screen name="ValidateBVN" component={ValidateBVN} />
-        <Screen name="VerifyBVN" component={VerifyBVN} />
         <Screen name="ValidateOTP" component={ValidateOTP} />
         <Screen name="CreatePin" component={CreatePin} />
         <Screen name="ConfirmPin" component={ConfirmPin} />

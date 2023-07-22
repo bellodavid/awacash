@@ -1,13 +1,13 @@
 import { StyleSheet, View } from 'react-native';
 
 import { Button, Container, Divider, Text, Title } from 'components';
-import { AuthRoutes, StackNavigationProps } from 'navigation';
+import { KYCRoutes, StackNavigationProps } from 'navigation';
 import { Icon } from 'assets';
 import { pallets } from 'constant';
 
 export default function CaptureDoc({
   navigation,
-}: StackNavigationProps<AuthRoutes, 'CaptureDoc'>): JSX.Element {
+}: StackNavigationProps<KYCRoutes, 'CaptureDoc'>): JSX.Element {
   return (
     <Container header>
       <Title title="Take a Picture of your Document" />

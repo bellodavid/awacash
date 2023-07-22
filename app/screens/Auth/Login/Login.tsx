@@ -3,7 +3,6 @@ import { useRef } from 'react';
 
 import {
   ActionText,
-  BottomSheet,
   Container,
   Divider,
   Form,
@@ -37,7 +36,11 @@ export default function Login({
     <Container header>
       <Title title="Login" />
       <Form
-        initialValues={{ email: email, password: '', remember: rememberMe }}
+        initialValues={{
+          email: email,
+          password: '',
+          remember: rememberMe,
+        }}
         onSubmit={values => {
           dispatch(setEmail(values.email));
           dispatch(setRememberMe(values.remember));
@@ -89,7 +92,6 @@ export default function Login({
       <View style={styles.container}>
         <View />
       </View>
-      <BottomSheet />
     </Container>
   );
 }
@@ -99,7 +101,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-// Colors | Themes
-// Navigation
-// Images

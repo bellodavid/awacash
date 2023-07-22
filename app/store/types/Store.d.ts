@@ -7,9 +7,9 @@ type ThemeState = {
 
 type AuthState = {
   isAuthenticated: boolean;
-  user: User | null;
-  token: string | null;
-  balance: number | null;
+  user?: User | null;
+  token?: string | null;
+  balance?: number | null;
 };
 
 type PersistedState = {

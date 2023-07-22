@@ -13,12 +13,12 @@ interface TitleProps {
   color?: string;
 }
 
-const { fonts } = layout;
+const { fonts, spacing } = layout;
 
 export default function Title({
   title,
   subtitle,
-  marginBottom = layout.spacing.xxl,
+  marginBottom = spacing.xxl,
   color,
 }: TitleProps): JSX.Element | null {
   return (

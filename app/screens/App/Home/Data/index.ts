@@ -45,25 +45,25 @@ export const transactions: TransactionProps[] = [
   {
     amount: '5000',
     date: new Date(),
-    message: 'From Tunde',
+    message: 'From Ola',
     type: 'credit',
   },
   {
     amount: '75000',
     date: new Date(),
-    message: 'From Tunde',
+    message: 'From Chinedu',
     type: 'debit',
   },
   {
     amount: '2500',
     date: new Date(),
-    message: 'From Tunde',
+    message: 'From James',
     type: 'credit',
   },
   {
     amount: '5000',
     date: new Date(),
-    message: 'From Tunde',
+    message: 'From Agba',
     type: 'credit',
   },
   {

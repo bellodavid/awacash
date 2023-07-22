@@ -89,7 +89,7 @@ export default function Logo({
         </G>
         <Defs>
           <ClipPath id="clip0_1_107">
-            <Rect width={50} height={8.33333} fill={pallets.white} />
+            <Rect width={50} height={8.333_33} fill={pallets.white} />
           </ClipPath>
         </Defs>
       </>
@@ -164,7 +164,7 @@ export default function Logo({
         </G>
         <Defs>
           <ClipPath id="clip0_9_144">
-            <Rect width={50} height={8.33333} fill={pallets.white} />
+            <Rect width={50} height={8.333_33} fill={pallets.white} />
           </ClipPath>
         </Defs>
       </>
@@ -239,7 +239,7 @@ export default function Logo({
         </G>
         <Defs>
           <ClipPath id="clip0_1_110">
-            <Rect width={50} height={8.33333} fill={pallets.white} />
+            <Rect width={50} height={8.333_33} fill={pallets.white} />
           </ClipPath>
         </Defs>
       </>

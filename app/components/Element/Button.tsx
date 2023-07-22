@@ -34,6 +34,8 @@ interface TouchableProps {
   children: JSX.Element;
 }
 
+//TODO: Refactor this component
+// eslint-disable-next-line sonarjs/cognitive-complexity
 function Button({
   disabled: buttonDisabled,
   label,
@@ -51,23 +53,27 @@ function Button({
   let textColor: string = pallets.white;
 
   switch (variant) {
-    case 'secondary':
-      buttonStyle.backgroundColor = Color ? Color : pallets.white;
+    case 'secondary': {
+      buttonStyle.backgroundColor = Color || pallets.white;
       textColor = Color ? pallets.white : pallets.primary;
       break;
-    case 'transparent':
+    }
+    case 'transparent': {
       buttonStyle.backgroundColor = pallets.transparent;
-      textColor = Color ? Color : pallets.primary;
+      textColor = Color || pallets.primary;
       break;
-    case 'outline':
-      buttonStyle.borderColor = Color ? Color : pallets.primary;
+    }
+    case 'outline': {
+      buttonStyle.borderColor = Color || pallets.primary;
       buttonStyle.borderWidth = 1.5;
-      textColor = Color ? Color : pallets.primary;
+      textColor = Color || pallets.primary;
       break;
-    default:
+    }
+    default: {
       buttonStyle.backgroundColor = pallets.primary;
       textColor = pallets.white;
       break;
+    }
   }
 
   const Touchable = ({ children }: TouchableProps): JSX.Element => {
@@ -85,7 +91,7 @@ function Button({
 
   if (buttonDisabled) {
     buttonStyle.opacity = 0.8;
-    buttonStyle.backgroundColor = Color ? Color : pallets.grey;
+    buttonStyle.backgroundColor = Color || pallets.grey;
   }
 
   if (isLoading) {

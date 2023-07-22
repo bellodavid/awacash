@@ -1,12 +1,12 @@
 import { ActionText, Container, Divider, Form, FormPin, Submit, Title } from 'components';
 import { layout } from 'constant';
-import { AuthRoutes, StackNavigationProps } from 'navigation';
+import { KYCRoutes, StackNavigationProps } from 'navigation';
 
 const { spacing } = layout;
 
 export default function ValidateBVN({
   navigation,
-}: StackNavigationProps<AuthRoutes, 'ValidateBVN'>): JSX.Element {
+}: StackNavigationProps<KYCRoutes, 'ValidateBVN'>): JSX.Element {
   return (
     <Container header>
       <Title
@@ -15,8 +15,8 @@ export default function ValidateBVN({
       />
       <Form
         initialValues={{ otp: '' }}
-        onSubmit={val => {
-          console.log(val);
+        onSubmit={value => {
+          console.log(value);
           navigation.navigate('Address');
         }}>
         <FormPin name="otp" cellCount={6} />

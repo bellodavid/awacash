@@ -32,3 +32,12 @@ export type MoreRoutes = {
   BiometricSettings: undefined;
   ChangePin: undefined;
 };
+
+export type KYCRoutes = {
+  VerifyBVN: undefined;
+  ValidateBVN: undefined;
+  Address: undefined;
+  ValidID: undefined;
+  CaptureDoc: undefined;
+  TakeSelfie: undefined;
+};
