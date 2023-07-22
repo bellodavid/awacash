@@ -3,6 +3,7 @@ import { useRef } from 'react';
 
 import {
   ActionText,
+  BottomSheet,
   Container,
   Divider,
   Form,
@@ -88,6 +89,7 @@ export default function Login({
       <View style={styles.container}>
         <View />
       </View>
+      <BottomSheet />
     </Container>
   );
 }

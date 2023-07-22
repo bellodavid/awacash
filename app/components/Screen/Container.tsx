@@ -39,6 +39,7 @@ export default function Container({
   return (
     <>
       {header && <Header {...headerOptions} />}
+      {topInset && !header && <View style={{ backgroundColor, height: insets.top }} />}
       <View
         style={[
           { padding, paddingHorizontal },
@@ -50,7 +51,6 @@ export default function Container({
           },
         ]}
         {...props}>
-        {topInset && !header && <View style={{ backgroundColor, height: insets.top }} />}
         {children}
       </View>
     </>

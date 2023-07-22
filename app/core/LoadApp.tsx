@@ -1,10 +1,10 @@
-import { View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { NavigationContainer, Theme } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { pallets } from 'constant';
 import { AppNavigator, AuthNavigator } from 'navigation';
@@ -45,13 +45,13 @@ export default function LoadApp(): JSX.Element | null {
   }
 
   return (
-    <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
+    <GestureHandlerRootView onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <NavigationContainer {...{ theme }}>
         <SafeAreaProvider>
           {isAuthenticated ? <AppNavigator /> : <AuthNavigator />}
           <StatusBar style="dark" backgroundColor="transparent" translucent />
         </SafeAreaProvider>
       </NavigationContainer>
-    </View>
+    </GestureHandlerRootView>
   );
 }

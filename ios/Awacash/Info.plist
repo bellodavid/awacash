@@ -52,7 +52,6 @@
     <string>Allow $(PRODUCT_NAME) to use the microphone</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Give $(PRODUCT_NAME) permission to save photos</string>
-    <key>NSCameraUsageDescription</key>
     <key>UILaunchStoryboardName</key>
     <string>SplashScreen</string>
     <key>UIRequiredDeviceCapabilities</key>

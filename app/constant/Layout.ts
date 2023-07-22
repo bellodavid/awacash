@@ -45,7 +45,7 @@ export default {
     body: xSmall ? 14 : small ? 15 : medium ? 16 : 17,
     callout: xSmall ? 13 : small ? 14 : medium ? 14 : 16,
     caption1: xSmall ? 11 : small ? 11 : 12,
-    caption2: xSmall ? 11 : small ? 11 : 11,
+    caption2: xSmall ? 11 : small ? 11 : 12,
     footnote: xSmall ? 12 : small ? 12 : 13,
     headline: xSmall ? 14 : small ? 15 : medium ? 16 : 17,
     largeTitle: xSmall ? 28 : small ? 30 : 34,

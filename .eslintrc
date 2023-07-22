@@ -14,7 +14,10 @@
     "plugin:import/warnings",
     "plugin:import/typescript",
     "@react-native-community",
-    "plugin:react/jsx-runtime"
+    "plugin:react/jsx-runtime",
+    "plugin:security/recommended",
+    "plugin:unicorn/recommended",
+    "plugin:sonarjs/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -24,7 +27,16 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "react-native", "import", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "react-native",
+    "import",
+    "prettier",
+    "unicorn",
+    "security",
+    "sonarjs"
+  ],
   "rules": {
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
@@ -64,7 +76,11 @@
     "react/no-unescaped-entities": 0,
     "import/order": [1, { "newlines-between": "always" }],
     "import/namespace": [0, { "allowComputed": false }],
-    "react/no-unstable-nested-components": [0, { "allowAsProps": true }]
+    "react/no-unstable-nested-components": [0, { "allowAsProps": true }],
+    "unicorn/filename-case": 0,
+    "unicorn/no-nested-ternary": 0,
+    "security/detect-non-literal-require": "error",
+    "sonarjs/cognitive-complexity": "error"
   },
   "settings": {
     "import/resolver": {
