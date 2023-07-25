@@ -18,15 +18,12 @@ const { actions, reducer } = createSlice({
       state.token = payload.data.token;
       state.isAuthenticated = true;
     });
-    // builder.addMatcher(
-    //   authEndpoints.register.matchFulfilled,
-    //   (state, { payload }) => {
-    //     devLogger((payload.data as Response).user, 'USER REGISTERED IN');
+    builder.addMatcher(authEndpoints.register.matchFulfilled, (state, { payload }) => {
+      console.log((payload.data as Response).user, 'USER REGISTERED IN');
 
-    //     state.user = (payload.data as Response).user;
-    //     state.token = payload.data.token;
-    //   },
-    // );
+      state.user = (payload.data as Response).user;
+      state.token = payload.data.token;
+    });
     // builder.addMatcher(
     //   customerEndpoints.getBalance.matchFulfilled,
     //   (state, { payload }) => {
