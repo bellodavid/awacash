@@ -1,5 +1,7 @@
-import { StyleSheet, TextInput, View } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { useRef } from 'react';
+
+import { Biometric } from '../Components';
 
 import {
   ActionText,
@@ -21,6 +23,8 @@ import {
 } from 'store';
 import { layout } from 'constant';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
+import { loginValidationSchema } from 'utils';
+import { useLoginMutation } from 'service';
 
 const { fonts } = layout;
 
@@ -28,14 +32,27 @@ export default function Login({
   navigation,
 }: StackNavigationProps<AuthRoutes, 'Login'>): JSX.Element {
   const { email, rememberMe } = useSelector(state => state.persisted);
+  const [login, { isLoading }] = useLoginMutation();
 
   const passwordRef = useRef<TextInput>(null);
   const dispatch = useDispatch();
+
+  const handleLogin = async ({ mail, password }: { mail: string; password: string }) => {
+    const result = await login({ email: mail, password });
+
+    if ('error' in result) {
+      console.log(result.error);
+      dispatch(setAuthenticated(true));
+    } else {
+      console.log(result.data);
+    }
+  };
 
   return (
     <Container header>
       <Title title="Login" />
       <Form
+        validationSchema={loginValidationSchema}
         initialValues={{
           email: email,
           password: '',
@@ -44,7 +61,8 @@ export default function Login({
         onSubmit={values => {
           dispatch(setEmail(values.email));
           dispatch(setRememberMe(values.remember));
-          dispatch(setAuthenticated(true));
+
+          handleLogin({ mail: values.email, password: values.password });
         }}>
         <FormField
           name="email"
@@ -78,7 +96,7 @@ export default function Login({
           </Text>
         </View>
         <Divider space="xxl" />
-        <Submit label="Login" />
+        <Submit label="Login" {...{ isLoading }} />
         <Divider />
         <ActionText
           action="Sign In"
@@ -89,15 +107,7 @@ export default function Login({
         />
         <Divider />
       </Form>
-      <View style={styles.container}>
-        <View />
-      </View>
+      <Biometric />
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

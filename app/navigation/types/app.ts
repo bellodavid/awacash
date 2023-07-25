@@ -14,7 +14,7 @@ export type TabRoutes = {
 };
 
 export type HomeRoutes = {
-  TransferMethod: undefined;
+  Transfer: NavigatorScreenParams<TransferRoutes>;
 };
 
 export type MoreRoutes = {
@@ -40,4 +40,22 @@ export type KYCRoutes = {
   ValidID: undefined;
   CaptureDoc: undefined;
   TakeSelfie: undefined;
+};
+
+export type TransferRoutes = {
+  TransferMethod: undefined;
+  TransferSuccess: undefined;
+  Beneficiary: undefined;
+
+  AwacashTransfer: undefined;
+  AwacashTransferConfirmation: undefined;
+  AwacashTransferPin: undefined;
+
+  MyAccountTransfer: undefined;
+  MyAccountConfirm: undefined;
+  MyAccountPin: undefined;
+
+  BankTransfer: undefined;
+  BankConfirmation: undefined;
+  BankPin: undefined;
 };

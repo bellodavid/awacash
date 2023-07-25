@@ -13,7 +13,7 @@ import {
 import reducer from './reducer';
 import { reduxStorage } from './storage';
 
-// import { apiMiddleware } from 'service/config';
+import { apiMiddleware } from 'service/config';
 
 const persistConfig = {
   blacklist: ['auth'],
@@ -26,12 +26,14 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = configureStore({
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  middleware: getDefaultMiddleware => [
+    ...getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    apiMiddleware,
+  ],
   reducer: persistedReducer,
 });
 

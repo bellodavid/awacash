@@ -110,3 +110,13 @@ interface PickerItemProps {
   value2?: string;
   value3?: string;
 }
+
+type error =
+  | import('@reduxjs/toolkit/dist/query').FetchBaseQueryError
+  | import('@reduxjs/toolkit').SerializedError
+  | undefined;
+
+interface IError extends error {
+  message?: string;
+  data?: unknown;
+}

@@ -95,7 +95,7 @@ const FormInput = forwardRef<TextInput, FormInputProps>(function (
           style={[
             styles.input,
             {
-              color: disabled ? color.border : error ? color.red : color.text,
+              color: disabled ? color.border : color.text,
               fontFamily: 'DMSansRegular',
               height: '100%',
             },

@@ -12,13 +12,18 @@ import {
 } from 'components';
 import { Logo } from 'assets';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
+import { signUpValidationSchema } from 'utils';
+import { useSendPhoneVerificationMutation } from 'service';
 
 export default function SignUp({
   navigation,
 }: StackNavigationProps<AuthRoutes, 'SignUp'>): JSX.Element {
+  const [send, { isLoading }] = useSendPhoneVerificationMutation();
+
   const [showPass, setShowPass] = useState(true);
   const [showConfirm, setShowConfirm] = useState(true);
-  const [_params, setParams] = useState({
+
+  const [params, setParams] = useState({
     confirmPassword: '',
     email: '',
     password: '',
@@ -29,6 +34,16 @@ export default function SignUp({
   const passwordRef = useRef<TextInput>(null);
   const confirmPasswordRef = useRef<TextInput>(null);
 
+  const sendOTP = async ({ phoneNumber }: { phoneNumber: string }) => {
+    const result = await send({ phoneNumber });
+    if ('error' in result) {
+      console.log(result.error);
+    } else {
+      console.log('params', params);
+      navigation.navigate('ValidateOTP', { data: params, tokenId: result.data.data });
+    }
+  };
+
   return (
     <Container header>
       <VirtualScroll>
@@ -36,6 +51,7 @@ export default function SignUp({
         <Divider />
         <Title title="Personal Details" />
         <Form
+          validationSchema={signUpValidationSchema}
           initialValues={{
             confirmPassword: '',
             email: '',
@@ -44,8 +60,7 @@ export default function SignUp({
           }}
           onSubmit={values => {
             setParams(values);
-            console.log(values);
-            navigation.navigate('PersonalDetails');
+            sendOTP({ phoneNumber: values.phoneNumber });
           }}>
           <FormField
             label="Email"
@@ -87,7 +102,7 @@ export default function SignUp({
             onRightIconPress={() => setShowConfirm(i => !i)}
           />
           <Divider space="xl" />
-          <Submit label="Next" />
+          <Submit {...{ isLoading }} label="Next" />
           <Divider space="s" />
         </Form>
         <View style={styles.container}>
@@ -103,3 +118,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+//adeola@mailinator.com

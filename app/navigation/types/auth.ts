@@ -29,7 +29,7 @@ export type AuthRoutes = {
   AwacashSignUpSuccess: undefined;
 
   SignUp: undefined;
-  ValidateOTP: { params: UserParams; tokenId: string };
+  ValidateOTP: { data: UserParams; tokenId: string };
   PersonalDetails: undefined;
   CreatePin: undefined;
   ConfirmPin: undefined;

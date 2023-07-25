@@ -2,10 +2,10 @@ import { combineReducers } from 'redux';
 
 import { auth, persisted, theme } from './features';
 
-// import { apiReducer, apiReducerPath } from 'service/config';
+import { apiReducer, apiReducerPath } from 'service/config';
 
 export default combineReducers({
-  // [apiReducerPath]: apiReducer,
+  [apiReducerPath]: apiReducer,
   auth,
   persisted,
   theme,

@@ -16,10 +16,24 @@ const email = Yup.string()
   .email('Email is invalid')
   .label('Email');
 
-const name = Yup.string()
-  .required('Please input your legal full name')
-  .min(2, 'Name must be at least 2 digits long')
-  .label('Name');
+export const confirmPassword = Yup.string()
+  .oneOf([Yup.ref('password'), undefined], 'Passwords must match')
+  .required('Please confirm your password');
+
+export const phoneNumber = Yup.string()
+  .required('Please enter your phone number')
+  .min(10, 'Phone number must be at least 10 digits long')
+  .label('Phone Number');
+
+export const otp = Yup.string()
+  .required('Please enter your OTP')
+  .min(5, 'OTP must be at least 5 digits long')
+  .label('OTP');
+
+// const name = Yup.string()
+//   .required('Please input your legal full name')
+//   .min(2, 'Name must be at least 2 digits long')
+//   .label('Name');
 
 export const loginValidationSchema = Yup.object().shape({
   email,
@@ -27,7 +41,12 @@ export const loginValidationSchema = Yup.object().shape({
 });
 
 export const signUpValidationSchema = Yup.object().shape({
+  confirmPassword,
   email,
-  name,
   password,
+  phoneNumber,
+});
+
+export const otpValidationSchema = Yup.object().shape({
+  otp,
 });

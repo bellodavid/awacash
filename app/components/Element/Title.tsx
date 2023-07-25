@@ -11,6 +11,7 @@ interface TitleProps {
   subtitle?: string;
   marginBottom?: number;
   color?: string;
+  subColor?: string;
 }
 
 const { fonts, spacing } = layout;
@@ -20,6 +21,7 @@ export default function Title({
   subtitle,
   marginBottom = spacing.xxl,
   color,
+  subColor,
 }: TitleProps): JSX.Element | null {
   return (
     <View style={{ marginBottom }}>
@@ -28,7 +30,7 @@ export default function Title({
       </Text>
       <Divider space="t" />
       {subtitle && (
-        <Text size={fonts.subhead} color={pallets.grey}>
+        <Text size={fonts.subhead} color={subColor || pallets.grey}>
           {subtitle}
         </Text>
       )}

@@ -1,13 +1,18 @@
 import { NavigatorScreenParams } from '@react-navigation/native';
 
 import { pallets } from 'constant';
-import { HomeRoutes } from 'navigation';
+import { HomeRoutes, TransferRoutes } from 'navigation';
 
 interface HomeSection {
   title: string;
   icon: IconName;
   color: string;
   route?: NavigatorScreenParams<HomeRoutes>;
+}
+
+interface TransferSectionProps {
+  title: string;
+  route: keyof TransferRoutes;
 }
 
 interface TransactionProps {
@@ -21,7 +26,10 @@ export const homeSection: HomeSection[] = [
   {
     color: '#23E7B8',
     icon: 'send',
-    route: { screen: 'TransferMethod' },
+    route: {
+      params: { screen: 'TransferMethod' },
+      screen: 'Transfer',
+    },
     title: 'Transfer',
   },
   {
@@ -71,5 +79,24 @@ export const transactions: TransactionProps[] = [
     date: new Date(),
     message: 'From Tunde',
     type: 'credit',
+  },
+];
+
+export const transferSection: TransferSectionProps[] = [
+  {
+    route: 'AwacashTransfer',
+    title: 'Transfer to Awacash Account',
+  },
+  {
+    route: 'Beneficiary',
+    title: 'Transfer to a Beneficiary',
+  },
+  {
+    route: 'BankTransfer',
+    title: 'Transfer to other Banks',
+  },
+  {
+    route: 'MyAccountTransfer',
+    title: 'Transfer to my Account',
   },
 ];

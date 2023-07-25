@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { HomeRoutes } from '../../types';
 
-import { TransferMethod } from 'screens';
+import TransferStack from './TransferStack';
 
 const { Navigator, Screen, Group } = createStackNavigator<HomeRoutes>();
 
@@ -13,7 +13,7 @@ export default function HomeNavigator() {
         headerShown: false,
       }}>
       <Group>
-        <Screen name="TransferMethod" component={TransferMethod} />
+        <Screen name="Transfer" component={TransferStack} />
       </Group>
     </Navigator>
   );
