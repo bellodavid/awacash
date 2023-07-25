@@ -50,7 +50,7 @@ const authenticationEndpoints = injectEndpoints({
         url: 'Auth/send-phone-verification-code',
       }),
     }),
-    verifyPhone: builder.mutation<APIResponse<boolean>, VerifyPhoneModel>({
+    verifyPhone: builder.mutation<APIResponse<string>, VerifyPhoneModel>({
       query: body => ({
         body,
         method: 'POST',

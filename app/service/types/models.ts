@@ -14,6 +14,7 @@ declare module 'authModels' {
     confirmPassword: string;
     pin: string;
     confirmPin: string;
+    hash: string;
   }
 
   export interface ChangePasswordModel {
@@ -34,7 +35,7 @@ declare module 'authModels' {
   export interface VerifyPhoneModel {
     phoneNumber: string;
     code: string;
-    tokenId: string;
+    hash: string;
   }
 }
 

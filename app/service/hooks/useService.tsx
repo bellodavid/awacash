@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { Alert, Keyboard } from 'react-native';
 
 import { handleError } from 'utils';
-import { useDispatch } from 'store';
 
 interface Props {
   error: FetchBaseQueryError | SerializedError | undefined;
@@ -31,22 +30,14 @@ export default function useService({
   successEffect,
   errorEffect,
 }: Props) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     let ignore = false;
 
     isLoading && Keyboard.dismiss();
     if (!isLoading && isSuccess) {
-      successMsg &&
-        dispatch({
-          payload: {
-            message: successMsg,
-            status: 'success',
-          },
-          type: 'toast/showToast',
-        });
-
+      successMsg && console.log(successMsg);
       successEffect?.();
     }
 
@@ -86,7 +77,6 @@ export default function useService({
     isPrivate,
     error,
     errorTitle,
-    dispatch,
     reset,
   ]);
 }

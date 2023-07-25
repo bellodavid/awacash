@@ -36,7 +36,7 @@ export default function Biometric(): JSX.Element | null {
   return (
     <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
       <TouchableOpacity activeOpacity={0.6}>
-        <Icon color={pallets.primary} name="finger-scan" size={60} />
+        <Icon color={pallets.primary} name="biometric-ios-facescan" size={60} />
       </TouchableOpacity>
     </View>
   );

@@ -14,17 +14,11 @@ import {
   Text,
   Title,
 } from 'components';
-import {
-  setAuthenticated,
-  setEmail,
-  setRememberMe,
-  useDispatch,
-  useSelector,
-} from 'store';
+import { setEmail, setRememberMe, useDispatch, useSelector } from 'store';
 import { layout } from 'constant';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
 import { loginValidationSchema } from 'utils';
-import { useLoginMutation } from 'service';
+import { useLoginMutation, useService } from 'service';
 
 const { fonts } = layout;
 
@@ -32,21 +26,17 @@ export default function Login({
   navigation,
 }: StackNavigationProps<AuthRoutes, 'Login'>): JSX.Element {
   const { email, rememberMe } = useSelector(state => state.persisted);
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading, isError, isSuccess, error }] = useLoginMutation();
 
   const passwordRef = useRef<TextInput>(null);
   const dispatch = useDispatch();
 
-  const handleLogin = async ({ mail, password }: { mail: string; password: string }) => {
-    const result = await login({ email: mail, password });
-
-    if ('error' in result) {
-      console.log(result.error);
-      dispatch(setAuthenticated(true));
-    } else {
-      console.log(result.data);
-    }
-  };
+  useService({
+    error,
+    isError,
+    isLoading,
+    isSuccess,
+  });
 
   return (
     <Container header>
@@ -58,11 +48,11 @@ export default function Login({
           password: '',
           remember: rememberMe,
         }}
-        onSubmit={values => {
-          dispatch(setEmail(values.email));
-          dispatch(setRememberMe(values.remember));
+        onSubmit={({ email: mail, password, remember }) => {
+          dispatch(setEmail(email));
+          dispatch(setRememberMe(remember));
 
-          handleLogin({ mail: values.email, password: values.password });
+          login({ email: mail, password });
         }}>
         <FormField
           name="email"

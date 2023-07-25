@@ -13,12 +13,13 @@ import {
 import { Logo } from 'assets';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
 import { signUpValidationSchema } from 'utils';
-import { useSendPhoneVerificationMutation } from 'service';
+import { useSendPhoneVerificationMutation, useService } from 'service';
 
 export default function SignUp({
   navigation,
 }: StackNavigationProps<AuthRoutes, 'SignUp'>): JSX.Element {
-  const [send, { isLoading }] = useSendPhoneVerificationMutation();
+  const [send, { isLoading, error, isError, isSuccess, data }] =
+    useSendPhoneVerificationMutation();
 
   const [showPass, setShowPass] = useState(true);
   const [showConfirm, setShowConfirm] = useState(true);
@@ -34,15 +35,26 @@ export default function SignUp({
   const passwordRef = useRef<TextInput>(null);
   const confirmPasswordRef = useRef<TextInput>(null);
 
-  const sendOTP = async ({ phoneNumber }: { phoneNumber: string }) => {
-    const result = await send({ phoneNumber });
-    if ('error' in result) {
-      console.log(result.error);
-    } else {
-      console.log('params', params);
-      navigation.navigate('ValidateOTP', { data: params, tokenId: result.data.data });
-    }
-  };
+  useService({
+    error,
+    isError,
+    isLoading,
+    isSuccess,
+    successEffect() {
+      if (data?.data) {
+        navigation.navigate('ValidateOTP', { ...params, hash: data.data });
+      }
+    },
+  });
+
+  // const sendOTP = async ({ phoneNumber }: { phoneNumber: string }) => {
+  //   const result = await send({ phoneNumber });
+  //   if ('error' in result) {
+  //     console.log(result.error);
+  //   } else {
+  //     console.log('params', params);
+  //   }
+  // };
 
   return (
     <Container header>
@@ -60,7 +72,7 @@ export default function SignUp({
           }}
           onSubmit={values => {
             setParams(values);
-            sendOTP({ phoneNumber: values.phoneNumber });
+            send({ phoneNumber: values.phoneNumber });
           }}>
           <FormField
             label="Email"

@@ -30,6 +30,21 @@ export const otp = Yup.string()
   .min(5, 'OTP must be at least 5 digits long')
   .label('OTP');
 
+export const firstName = Yup.string()
+  .required('Please input your legal first name')
+  .min(2, 'First name must be at least 2 digits long')
+  .label('First Name');
+
+export const lastName = Yup.string()
+  .required('Please input your legal last name')
+  .min(2, 'Last name must be at least 2 digits long')
+  .label('Last Name');
+
+export const middleName = Yup.string()
+  .required('Please input your legal middle name')
+  .min(2, 'Middle name must be at least 2 digits long')
+  .label('Middle Name');
+
 // const name = Yup.string()
 //   .required('Please input your legal full name')
 //   .min(2, 'Name must be at least 2 digits long')
@@ -49,4 +64,10 @@ export const signUpValidationSchema = Yup.object().shape({
 
 export const otpValidationSchema = Yup.object().shape({
   otp,
+});
+
+export const personalDetailsValidationSchema = Yup.object().shape({
+  firstName,
+  lastName,
+  middleName,
 });

@@ -1,6 +1,6 @@
 import { ActionText, Container, Divider, Form, FormPin, Submit, Title } from 'components';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
-import { useVerifyPhoneMutation } from 'service';
+import { useService, useVerifyPhoneMutation } from 'service';
 import { layout } from 'constant';
 import { otpValidationSchema } from 'utils';
 
@@ -12,31 +12,26 @@ export default function ValidateOTP({
 }: StackNavigationProps<AuthRoutes, 'ValidateOTP'>): JSX.Element {
   const { params } = route;
   console.log('🚀 ~ file: ValidateOTP.tsx:14 ~ params:', params);
-  const [verifyOtp, { isLoading }] = useVerifyPhoneMutation();
+  const [verify, { isLoading, isError, error, isSuccess, data }] =
+    useVerifyPhoneMutation();
 
-  const verify = async ({
-    code,
-    phoneNumber,
-    tokenId,
-  }: {
-    code: string;
-    phoneNumber: string;
-    tokenId: string;
-  }) => {
-    const result = await verifyOtp({ code, phoneNumber, tokenId });
-
-    if ('error' in result) {
-      console.log(result.error);
-    } else {
-      navigation.navigate('PersonalDetails');
-    }
-  };
+  useService({
+    error,
+    isError,
+    isLoading,
+    isSuccess,
+    successEffect() {
+      if (data?.data) {
+        navigation.navigate('PersonalDetails', { ...params, hash: data?.data });
+      }
+    },
+  });
 
   return (
     <Container header>
       <Title
         title="Validate OTP"
-        subtitle={`Enter the OTP sent sent to ${params.data.phoneNumber}`}
+        subtitle={`Enter the OTP sent sent to ${params.phoneNumber}`}
       />
       <Form
         validationSchema={otpValidationSchema}
@@ -45,8 +40,8 @@ export default function ValidateOTP({
           console.log(value);
           verify({
             code: value.otp,
-            phoneNumber: params?.data?.phoneNumber,
-            tokenId: params?.tokenId,
+            hash: params?.hash,
+            phoneNumber: params?.phoneNumber,
           });
         }}>
         <FormPin name="otp" cellCount={6} />

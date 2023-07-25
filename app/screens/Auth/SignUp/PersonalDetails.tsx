@@ -11,10 +11,13 @@ import {
   VirtualScroll,
 } from 'components';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
+import { personalDetailsValidationSchema } from 'utils';
 
 export default function PersonalDetails({
   navigation,
+  route,
 }: StackNavigationProps<AuthRoutes, 'PersonalDetails'>): JSX.Element {
+  const { params } = route;
   const middleNameRef = useRef<TextInput>(null);
   const lastNameRef = useRef<TextInput>(null);
 
@@ -26,14 +29,14 @@ export default function PersonalDetails({
           subtitle="Please, add your name as it appears on your official documents"
         />
         <Form
+          validationSchema={personalDetailsValidationSchema}
           initialValues={{
             firstName: '',
             lastName: '',
             middleName: '',
           }}
           onSubmit={values => {
-            console.log('🚀 ~ file: PersonalDetails.tsx:41 ~ values:', values);
-            navigation.navigate('CreatePin');
+            navigation.navigate('CreatePin', { ...params, ...values });
           }}>
           <FormField
             autoCorrect={false}

@@ -1,22 +1,12 @@
-interface RegisterModel {
-  email: string;
-  firstName: string;
-  lastName: string;
-  middleName: string;
-  phoneNumber: string;
-  password: string;
-  confirmPassword: string;
-  pin: string;
-  confirmPin: string;
-}
+import type { RegisterModel } from 'authModels';
 
 type UserParams = Pick<
   RegisterModel,
-  'password' | 'confirmPassword' | 'email' | 'phoneNumber'
+  'password' | 'confirmPassword' | 'email' | 'phoneNumber' | 'hash'
 >;
 
-// type PinParams = Omit<RegisterModel, 'confirmPin' | 'pin'>;
-// type ConfirmPinParams = Omit<RegisterModel, 'confirmPin'>;
+type PinParams = Omit<RegisterModel, 'confirmPin' | 'pin'>;
+type ConfirmPinParams = Omit<RegisterModel, 'confirmPin'>;
 
 export type AuthRoutes = {
   Welcome: undefined;
@@ -29,15 +19,15 @@ export type AuthRoutes = {
   AwacashSignUpSuccess: undefined;
 
   SignUp: undefined;
-  ValidateOTP: { data: UserParams; tokenId: string };
-  PersonalDetails: undefined;
-  CreatePin: undefined;
-  ConfirmPin: undefined;
+  ValidateOTP: UserParams;
+  PersonalDetails: UserParams;
+  CreatePin: PinParams;
+  ConfirmPin: ConfirmPinParams;
 
   Login: undefined;
   RequestResetOTP: undefined;
   ResetPassword: { email: string };
-  ValidateResetOTP: { tokenId: string; email: string };
+  ValidateResetOTP: { hash: string; email: string };
 
   AuthSuccess: { type: 'reset' | 'signup' };
 };
