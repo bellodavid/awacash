@@ -47,7 +47,7 @@ const FormInput = forwardRef<TextInput, FormInputProps>(function (
     onChangeText,
     error,
     labelColor,
-    marginBottom = 20,
+    marginBottom = 16,
     isLoading,
     isError,
     isErrorMessage,
@@ -84,7 +84,7 @@ const FormInput = forwardRef<TextInput, FormInputProps>(function (
         style={[
           styles.container,
           {
-            backgroundColor: color.input,
+            backgroundColor: error ? `${color.red}10` : color.input,
             borderColor: disabled ? color.border : error ? color.red : color.transparent,
           },
         ]}>
@@ -113,22 +113,16 @@ const FormInput = forwardRef<TextInput, FormInputProps>(function (
         style={{
           alignItems: 'center',
           flexDirection: 'row',
-          marginBottom,
+          marginBottom: error ? 8 : marginBottom,
           marginTop: isError || noteVisible || error ? 10 : 0,
         }}>
         {error && !isError && (
           <View
             style={{
-              alignItems: 'center',
-              backgroundColor: `${color.red}33`,
-              borderRadius: 5,
+              alignItems: 'flex-end',
               flex: 1,
-              flexDirection: 'row',
-              paddingHorizontal: 10,
-              paddingVertical: 5,
             }}>
-            <Icon name="info" size={20} style={{ marginRight: 10 }} color={pallets.red} />
-            <Text size={fonts.subhead} style={{}} color={color.red}>
+            <Text textAlign="right" size={fonts.caption2} color={color.red}>
               {errorMessage}
             </Text>
           </View>

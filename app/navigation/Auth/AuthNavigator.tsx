@@ -8,7 +8,9 @@ import {
   AwacashConfirmPin,
   AwacashCreatePin,
   AwacashPersonalDetails,
-  AwacashValidateOTP,
+  AwacashSignUp,
+  AwacashValidateAccountOTP,
+  AwacashValidateNumberOTP,
   ConfirmPin,
   CreatePin,
   Login,
@@ -50,10 +52,12 @@ export default function AuthNavigator(): JSX.Element {
       </Group>
       <Group>
         <Screen name="AwacashAccountNo" component={AwacashAccountNo} />
+        <Screen name="AwacashSignUp" component={AwacashSignUp} />
         <Screen name="AwacashConfirmPin" component={AwacashConfirmPin} />
         <Screen name="AwacashCreatePin" component={AwacashCreatePin} />
         <Screen name="AwacashPersonalDetails" component={AwacashPersonalDetails} />
-        <Screen name="AwacashValidateOTP" component={AwacashValidateOTP} />
+        <Screen name="AwacashValidateAccountOTP" component={AwacashValidateAccountOTP} />
+        <Screen name="AwacashValidateNumberOTP" component={AwacashValidateNumberOTP} />
       </Group>
       <Group
         screenOptions={{ cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS }}>

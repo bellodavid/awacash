@@ -4,8 +4,13 @@ import Lottie from 'lottie-react-native';
 import { Button, Container, Divider, Text } from 'components';
 import { lottie } from 'assets';
 import { setAuthenticated, useDispatch } from 'store';
+import { AuthRoutes, StackNavigationProps } from 'navigation';
 
-export default function AuthSuccess(): JSX.Element {
+export default function AuthSuccess({
+  navigation,
+  route,
+}: StackNavigationProps<AuthRoutes, 'AuthSuccess'>): JSX.Element {
+  const { type } = route.params;
   const dispatch = useDispatch();
 
   return (
@@ -16,22 +21,27 @@ export default function AuthSuccess(): JSX.Element {
           autoPlay
           loop
           style={{
-            height: 312,
-            width: 312,
+            height: 200,
+            width: 200,
           }}
         />
         <Divider />
         <Text variant="bold-700" size={24}>
-          Pin creation successful!
+          {type === 'signup' ? 'Account Created' : 'Password Reset Successful'}
         </Text>
         <Button
           label="Done"
           onPress={() => {
-            dispatch(setAuthenticated(true));
+            if (type === 'reset') {
+              navigation.navigate('Login');
+            }
+            if (type === 'signup') {
+              // navigation.navigate('Login');
+              dispatch(setAuthenticated(true));
+            }
           }}
         />
       </View>
-      <View style={{ flex: 1 }} />
     </Container>
   );
 }
