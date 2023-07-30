@@ -16,11 +16,10 @@ import { reduxStorage } from './storage';
 import { apiMiddleware } from 'service/config';
 
 const persistConfig = {
-  blacklist: ['auth'],
+  blacklist: __DEV__ ? undefined : ['auth'],
   key: 'root',
   storage: reduxStorage,
   version: 1,
-  // whitelist: ['auth'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

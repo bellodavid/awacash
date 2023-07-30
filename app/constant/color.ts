@@ -36,6 +36,7 @@ export const pallets = {
   grey: '#BBBBBB', //F4F0EF
   grey2: '#9A9999', //F4F0EF
   inactive: '#E3E3E3',
+  lightBlue: '#E0F1FF',
   neutral: '#F4F5F7',
   notification: '#2793EB',
   primary: '#2793EB',

@@ -1,9 +1,11 @@
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { useHeaderHeight } from 'hooks';
-import { layout } from 'constant';
+import { layout, pallets } from 'constant';
 import { Divider, Text } from 'components';
 import { Icon } from 'assets';
+import { getTimeOfDay } from 'utils';
+import { useSelector } from 'store';
 
 const { fonts, spacing, misc } = layout;
 
@@ -13,6 +15,7 @@ interface Props {
 
 export default function HomeHeader({ image }: Props): JSX.Element | null {
   const { insets, headerHeight } = useHeaderHeight();
+  const { user } = useSelector(state => state.auth);
   //   const navigation = useNavigation();
 
   return (
@@ -29,10 +32,15 @@ export default function HomeHeader({ image }: Props): JSX.Element | null {
         ]}>
         <View style={styles.row}>
           <TouchableOpacity>
-            {image ? <Image source={{ uri: image }} style={styles.image} /> : <View />}
+            <View style={styles.imgContainer}>
+              <Icon name="user" color={pallets.grey} size={20} />
+              {image ? <Image source={{ uri: image }} style={styles.image} /> : <View />}
+            </View>
           </TouchableOpacity>
           <Divider horizontal space="s" />
-          <Text size={fonts.callout}>Good Morning</Text>
+          <Text size={fonts.callout} textTransform="capitalize">
+            Good {getTimeOfDay()} {user?.firstName}
+          </Text>
         </View>
         <Icon name="notification" />
       </View>
@@ -42,8 +50,18 @@ export default function HomeHeader({ image }: Props): JSX.Element | null {
 
 const styles = StyleSheet.create({
   image: {
+    ...StyleSheet.absoluteFillObject,
+    height: undefined,
+    width: undefined,
+  },
+  imgContainer: {
+    alignItems: 'center',
+    borderColor: pallets.grey,
     borderRadius: misc.avatar / 2,
+    borderWidth: 0.5,
     height: misc.avatar,
+    justifyContent: 'center',
+    overflow: 'hidden',
     width: misc.avatar,
   },
   row: {

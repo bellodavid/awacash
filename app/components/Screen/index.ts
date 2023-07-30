@@ -6,3 +6,5 @@ export { default as PinNumpad } from './Numpad';
 export { default as BottomSheet } from './BottomSheet';
 export { default as BottomSheetModal } from './BottomSheetModal';
 export { default as Footer } from './Footer';
+export { default as AltHeader } from './AltHeader';
+export { default as SheetContainer } from './SheetContainer';
