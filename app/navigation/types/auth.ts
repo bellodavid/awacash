@@ -1,21 +1,35 @@
-import type { RegisterModel } from 'authModels';
+import type { AwacashRegisterModel, RegisterModel } from 'authModels';
 
 type UserParams = Pick<
   RegisterModel,
   'password' | 'confirmPassword' | 'email' | 'phoneNumber' | 'hash'
 >;
 
+type AwacashUserParams = Pick<
+  AwacashRegisterModel,
+  'password' | 'confirmPassword' | 'email' | 'phoneNumber' | 'hash' | 'accountId'
+>;
+
+interface AwacashUserAccountTokenParams extends AwacashUserParams {
+  accountHash: string;
+}
+
 type PinParams = Omit<RegisterModel, 'confirmPin' | 'pin'>;
 type ConfirmPinParams = Omit<RegisterModel, 'confirmPin'>;
+
+type AwacashPinParams = Omit<AwacashRegisterModel, 'confirmPin' | 'pin'>;
+type AwacashConfirmPinParams = Omit<AwacashRegisterModel, 'confirmPin'>;
 
 export type AuthRoutes = {
   Welcome: undefined;
 
   AwacashAccountNo: undefined;
-  AwacashValidateOTP: undefined;
-  AwacashConfirmPin: undefined;
-  AwacashCreatePin: undefined;
-  AwacashPersonalDetails: undefined;
+  AwacashValidateAccountOTP: { accountId: string; hash: string; accountNumber: string };
+  AwacashValidateNumberOTP: AwacashUserAccountTokenParams;
+  AwacashCreatePin: AwacashPinParams;
+  AwacashConfirmPin: AwacashConfirmPinParams;
+  AwacashSignUp: { accountId: string; hash: string };
+  AwacashPersonalDetails: AwacashUserParams;
   AwacashSignUpSuccess: undefined;
 
   SignUp: undefined;
@@ -26,7 +40,7 @@ export type AuthRoutes = {
 
   Login: undefined;
   RequestResetOTP: undefined;
-  ResetPassword: { email: string };
+  ResetPassword: { email: string; hash: string };
   ValidateResetOTP: { hash: string; email: string };
 
   AuthSuccess: { type: 'reset' | 'signup' };

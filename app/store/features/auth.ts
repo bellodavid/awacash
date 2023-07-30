@@ -24,6 +24,15 @@ const { actions, reducer } = createSlice({
       state.user = (payload.data as Response).user;
       state.token = payload.data.token;
     });
+    builder.addMatcher(
+      authEndpoints.registerAwacash.matchFulfilled,
+      (state, { payload }) => {
+        console.log((payload.data as Response).user, 'USER REGISTERED IN');
+
+        state.user = (payload.data as Response).user;
+        state.token = payload.data.token;
+      },
+    );
     // builder.addMatcher(
     //   customerEndpoints.getBalance.matchFulfilled,
     //   (state, { payload }) => {

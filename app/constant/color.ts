@@ -31,10 +31,12 @@ export const pallets = {
   card: '#F3F3F7',
   dark: '#2C363F',
   darkGrey: '#8a8d90',
+  errorYellow: '#FFA927',
   green: '#06D6A0', //#00FFDD
   grey: '#BBBBBB', //F4F0EF
   grey2: '#9A9999', //F4F0EF
   inactive: '#E3E3E3',
+  neutral: '#F4F5F7',
   notification: '#2793EB',
   primary: '#2793EB',
   primaryBlack: '#292D32',

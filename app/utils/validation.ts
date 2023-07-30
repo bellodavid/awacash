@@ -5,7 +5,7 @@ const passwordRegExr = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[A-Za-z]).{5,}$/;
 const password = Yup.string()
   .matches(
     passwordRegExr,
-    'Password must contain at least 5 characters, including Upper/lower case and numbers',
+    'Password must contain at least 5 characters, including upper & lower case and numbers',
   )
   .required('Please enter your password')
   .min(8, 'Password must be at least 8 characters long')
@@ -15,6 +15,11 @@ const email = Yup.string()
   .required('Please enter your email')
   .email('Email is invalid')
   .label('Email');
+
+export const accountNumber = Yup.string()
+  .required('Please enter account Number')
+  .min(10, 'Account number must be at least 10 digits long')
+  .label('Account number');
 
 export const confirmPassword = Yup.string()
   .oneOf([Yup.ref('password'), undefined], 'Passwords must match')
@@ -50,6 +55,10 @@ export const middleName = Yup.string()
 //   .min(2, 'Name must be at least 2 digits long')
 //   .label('Name');
 
+export const emailValidationSchema = Yup.object().shape({
+  email,
+});
+
 export const loginValidationSchema = Yup.object().shape({
   email,
   password,
@@ -70,4 +79,20 @@ export const personalDetailsValidationSchema = Yup.object().shape({
   firstName,
   lastName,
   middleName,
+});
+
+export const verifyEmailValidationSchema = Yup.object().shape({
+  code: Yup.string()
+    .required('Please enter your OTP')
+    .min(6, 'OTP must be at least 6 digits long')
+    .label('OTP'),
+});
+
+export const resetPasswordValidationSchema = Yup.object().shape({
+  confirmPassword,
+  password,
+});
+
+export const accountNumberValidationSchema = Yup.object().shape({
+  accountNumber,
 });
