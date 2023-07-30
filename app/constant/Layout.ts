@@ -69,6 +69,10 @@ export default {
     pill: 48,
     toastHeight: 100,
   },
+  numpad: {
+    btnHeight: medium ? 55 : 50,
+    inputHeight: 50,
+  },
   spacing: {
     l: 24,
     m: 16,

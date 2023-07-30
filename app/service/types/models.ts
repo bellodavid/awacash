@@ -17,6 +17,40 @@ declare module 'authModels' {
     hash: string;
   }
 
+  export interface AwacashRegisterModel {
+    accountId: string;
+    confirmPassword: string;
+    confirmPin: string;
+    email: string;
+    firstName: string;
+    hash: string;
+    lastName: string;
+    middleName: string;
+    password: string;
+    phoneNumber: string;
+    pin: string;
+  }
+
+  export interface ResetPasswordModel {
+    email: string;
+    confirmPassword: string;
+    password: string;
+    hash: string;
+  }
+
+  export interface PasswordRestModel {
+    email: string;
+  }
+
+  export interface AccountVerificationModel {
+    code: string;
+    hash: string;
+  }
+
+  export interface SendAccountVerificationModel {
+    accountNumber: string;
+  }
+
   export interface ChangePasswordModel {
     oldPassword: string;
     newPassword: string;
@@ -30,6 +64,11 @@ declare module 'authModels' {
   }
   export interface SendPhoneVerificationModel {
     phoneNumber: string;
+  }
+
+  export interface VerifyPasswordModel {
+    code: string;
+    hash: string;
   }
 
   export interface VerifyPhoneModel {
@@ -201,6 +240,11 @@ declare module 'api-response' {
     modifiedByIp?: string;
     modifiedDate?: Date;
     isDeleted: boolean;
+  }
+
+  export interface SendAccountVerificationResponse {
+    accountId: string;
+    hash: string;
   }
 }
 declare module 'transferModels' {

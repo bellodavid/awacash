@@ -16,16 +16,18 @@ import { AuthRoutes, StackNavigationProps } from 'navigation';
 import { signUpValidationSchema } from 'utils';
 import { useSendPhoneVerificationMutation, useService } from 'service';
 
-export default function SignUp({
+export default function AwacashSignUp({
   navigation,
-}: StackNavigationProps<AuthRoutes, 'SignUp'>): JSX.Element {
+  route,
+}: StackNavigationProps<AuthRoutes, 'AwacashSignUp'>): JSX.Element {
+  const { params } = route;
   const [send, { isLoading, error, isError, isSuccess, data }] =
     useSendPhoneVerificationMutation();
 
   const [showPass, setShowPass] = useState(true);
   const [showConfirm, setShowConfirm] = useState(true);
 
-  const [params, setParams] = useState({
+  const [values, setValues] = useState({
     confirmPassword: '',
     email: '',
     password: '',
@@ -43,19 +45,15 @@ export default function SignUp({
     isSuccess,
     successEffect() {
       if (data?.data) {
-        navigation.navigate('ValidateOTP', { ...params, hash: data.data });
+        navigation.navigate('AwacashValidateNumberOTP', {
+          ...values,
+          accountHash: params.hash,
+          accountId: params.accountId,
+          hash: data.data,
+        });
       }
     },
   });
-
-  // const sendOTP = async ({ phoneNumber }: { phoneNumber: string }) => {
-  //   const result = await send({ phoneNumber });
-  //   if ('error' in result) {
-  //     console.log(result.error);
-  //   } else {
-  //     console.log('params', params);
-  //   }
-  // };
 
   return (
     <>
@@ -73,9 +71,9 @@ export default function SignUp({
               password: '',
               phoneNumber: '',
             }}
-            onSubmit={values => {
-              setParams(values);
-              send({ phoneNumber: values.phoneNumber });
+            onSubmit={val => {
+              setValues(val);
+              send({ phoneNumber: val.phoneNumber });
             }}>
             <FormField
               label="Email"
@@ -134,5 +132,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-//adeola@mailinator.com
