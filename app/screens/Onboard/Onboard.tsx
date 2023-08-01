@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    height: window.width * 0.85,
+    height: window.width * 0.9,
     width: undefined,
   },
   page: {

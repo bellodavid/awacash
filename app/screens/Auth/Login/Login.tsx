@@ -50,7 +50,7 @@ export default function Login({
           remember: rememberMe,
         }}
         onSubmit={({ email: mail, password, remember }) => {
-          dispatch(setEmail(email));
+          dispatch(setEmail(mail));
           dispatch(setRememberMe(remember));
 
           login({ email: mail, password });
