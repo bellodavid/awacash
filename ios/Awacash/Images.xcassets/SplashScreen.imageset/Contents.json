@@ -2,7 +2,7 @@
   "images": [
     {
       "idiom": "universal",
-      "filename": "background.png",
+      "filename": "splashscreen.png",
       "scale": "1x"
     },
     {
@@ -13,7 +13,7 @@
         }
       ],
       "idiom": "universal",
-      "filename": "dark_background.png",
+      "filename": "dark_splashscreen.png",
       "scale": "1x"
     },
     {

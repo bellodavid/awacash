@@ -11,8 +11,6 @@ import { pallets } from 'constant';
 import { AppNavigator, AuthNavigator, OnboardNavigator } from 'navigation';
 import { useSelector } from 'store';
 
-SplashScreen.preventAutoHideAsync();
-
 const theme: Theme = {
   colors: {
     background: pallets.white,
@@ -31,14 +29,18 @@ const fonts = {
   DMSansRegular: require('../assets/fonts/DMSans-Regular.ttf'),
 };
 
+SplashScreen.preventAutoHideAsync();
+
 export default function LoadApp(): JSX.Element | null {
   const { isAuthenticated } = useSelector(state => state.auth);
   const { onboarded } = useSelector(state => state.persisted);
   const [fontsLoaded] = useFonts(fonts);
 
-  const onLayoutRootView = useCallback(async () => {
+  const onLayoutRootView = useCallback(() => {
     if (fontsLoaded) {
-      await SplashScreen.hideAsync();
+      setTimeout(async () => {
+        await SplashScreen.hideAsync();
+      }, 800);
     }
   }, [fontsLoaded]);
 
