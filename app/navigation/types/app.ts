@@ -47,14 +47,17 @@ export type TransferRoutes = {
   TransferSuccess: undefined;
   Beneficiary: undefined;
 
+  AwacashSelectAccount: undefined;
   AwacashTransfer: undefined;
   AwacashTransferConfirmation: undefined;
   AwacashTransferPin: undefined;
 
+  MyAccountSelect: undefined;
   MyAccountTransfer: undefined;
   MyAccountConfirm: undefined;
   MyAccountPin: undefined;
 
+  BankSelectAccount: undefined;
   BankTransfer: undefined;
   BankConfirmation: undefined;
   BankPin: undefined;

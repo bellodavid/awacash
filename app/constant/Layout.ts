@@ -63,6 +63,7 @@ export default {
   },
   misc: {
     avatar: 32,
+    avatarLarge: 80,
     boxLayout: 80,
     icon: 24,
     pagination: 40,

@@ -49,7 +49,9 @@ export default function AwacashSignUp({
           ...values,
           accountHash: params.hash,
           accountId: params.accountId,
+          firstName: params.firstName,
           hash: data.data,
+          lastName: params.lastName,
         });
       }
     },

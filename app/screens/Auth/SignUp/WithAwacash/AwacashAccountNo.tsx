@@ -22,7 +22,9 @@ export default function AwacashAccountNo({
       navigation.navigate('AwacashValidateAccountOTP', {
         accountId: data?.data.accountId || '',
         accountNumber: accountNum,
+        firstName: data?.data.firstName || '',
         hash: data?.data.hash || '',
+        lastName: data?.data.lastName || '',
       });
     },
   });

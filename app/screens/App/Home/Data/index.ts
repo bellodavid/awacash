@@ -84,7 +84,7 @@ export const transactions: TransactionProps[] = [
 
 export const transferSection: TransferSectionProps[] = [
   {
-    route: 'AwacashTransfer',
+    route: 'AwacashSelectAccount',
     title: 'Transfer to Awacash Account',
   },
   {
@@ -92,11 +92,11 @@ export const transferSection: TransferSectionProps[] = [
     title: 'Transfer to a Beneficiary',
   },
   {
-    route: 'BankTransfer',
+    route: 'BankSelectAccount',
     title: 'Transfer to other Banks',
   },
   {
-    route: 'MyAccountTransfer',
+    route: 'MyAccountSelect',
     title: 'Transfer to my Account',
   },
 ];

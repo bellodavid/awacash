@@ -8,7 +8,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 
 import { pallets } from 'constant';
-import { AppNavigator, AuthNavigator } from 'navigation';
+import { AppNavigator, AuthNavigator, OnboardNavigator } from 'navigation';
 import { useSelector } from 'store';
 
 SplashScreen.preventAutoHideAsync();
@@ -33,6 +33,7 @@ const fonts = {
 
 export default function LoadApp(): JSX.Element | null {
   const { isAuthenticated } = useSelector(state => state.auth);
+  const { onboarded } = useSelector(state => state.persisted);
   const [fontsLoaded] = useFonts(fonts);
 
   const onLayoutRootView = useCallback(async () => {
@@ -50,7 +51,13 @@ export default function LoadApp(): JSX.Element | null {
       <BottomSheetModalProvider>
         <NavigationContainer {...{ theme }}>
           <SafeAreaProvider>
-            {isAuthenticated ? <AppNavigator /> : <AuthNavigator />}
+            {isAuthenticated ? (
+              <AppNavigator />
+            ) : onboarded ? (
+              <AuthNavigator />
+            ) : (
+              <OnboardNavigator />
+            )}
             <StatusBar style="dark" backgroundColor="transparent" translucent />
           </SafeAreaProvider>
         </NavigationContainer>

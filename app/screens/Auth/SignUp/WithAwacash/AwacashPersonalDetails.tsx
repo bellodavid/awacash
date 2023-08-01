@@ -36,8 +36,8 @@ export default function AwacashPersonalDetails({
           <Form
             validationSchema={personalDetailsValidationSchema}
             initialValues={{
-              firstName: '',
-              lastName: '',
+              firstName: params.firstName,
+              lastName: params.lastName,
               middleName: '',
             }}
             onSubmit={val => {

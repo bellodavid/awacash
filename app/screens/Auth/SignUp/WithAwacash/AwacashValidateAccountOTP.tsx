@@ -34,7 +34,9 @@ export default function AwacashValidateAccountOTP({
       reset();
       navigation.navigate('AwacashSignUp', {
         accountId: params.accountId,
+        firstName: params.firstName,
         hash: data?.data || '',
+        lastName: params.lastName,
       });
     },
   });

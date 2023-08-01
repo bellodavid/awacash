@@ -7,7 +7,14 @@ type UserParams = Pick<
 
 type AwacashUserParams = Pick<
   AwacashRegisterModel,
-  'password' | 'confirmPassword' | 'email' | 'phoneNumber' | 'hash' | 'accountId'
+  | 'password'
+  | 'confirmPassword'
+  | 'email'
+  | 'phoneNumber'
+  | 'hash'
+  | 'accountId'
+  | 'firstName'
+  | 'lastName'
 >;
 
 interface AwacashUserAccountTokenParams extends AwacashUserParams {
@@ -20,15 +27,25 @@ type ConfirmPinParams = Omit<RegisterModel, 'confirmPin'>;
 type AwacashPinParams = Omit<AwacashRegisterModel, 'confirmPin' | 'pin'>;
 type AwacashConfirmPinParams = Omit<AwacashRegisterModel, 'confirmPin'>;
 
+export type OnboardRoutes = {
+  Onboard: undefined;
+};
+
 export type AuthRoutes = {
   Welcome: undefined;
 
   AwacashAccountNo: undefined;
-  AwacashValidateAccountOTP: { accountId: string; hash: string; accountNumber: string };
+  AwacashValidateAccountOTP: {
+    accountId: string;
+    hash: string;
+    accountNumber: string;
+    firstName: string;
+    lastName: string;
+  };
   AwacashValidateNumberOTP: AwacashUserAccountTokenParams;
   AwacashCreatePin: AwacashPinParams;
   AwacashConfirmPin: AwacashConfirmPinParams;
-  AwacashSignUp: { accountId: string; hash: string };
+  AwacashSignUp: { accountId: string; hash: string; firstName: string; lastName: string };
   AwacashPersonalDetails: AwacashUserParams;
   AwacashSignUpSuccess: undefined;
 
