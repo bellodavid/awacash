@@ -48,7 +48,7 @@ export default function Home({
               return (
                 <AccountCard
                   accountNumber="0012234455"
-                  balance="5000"
+                  balance="0"
                   name="Silver George"
                   width={cards.cardWidth}
                   marginRight={spacing.padding}
@@ -80,6 +80,7 @@ export default function Home({
                 return (
                   <View style={{ alignItems: 'center' }}>
                     <TouchableOpacity
+                      disabled
                       onPress={() => {
                         if (item.route) {
                           navigation.navigate('HomeStack', item.route);

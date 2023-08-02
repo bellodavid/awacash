@@ -10,6 +10,7 @@ import {
   Header,
   Submit,
   Title,
+  VirtualScroll,
 } from 'components';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
 import { resetPasswordValidationSchema as validationSchema } from 'utils';
@@ -36,44 +37,47 @@ export default function ResetPassword({
   return (
     <>
       <Header />
-      <Container>
-        <Title title="Password Reset" />
-        <Form
-          {...{ validationSchema }}
-          initialValues={{
-            confirmPassword: '',
-            password: '',
-          }}
-          onSubmit={({ confirmPassword, password }) => {
-            reset({
-              confirmPassword,
-              email: params.email,
-              hash: params.hash,
-              password,
-            });
-          }}>
-          <FormField
-            label="Password"
-            name="password"
-            secureTextEntry
-            returnKeyLabel="Next"
-            returnKeyType="next"
-            onSubmitEditing={() => confirmPasswordRef.current?.focus()}
-          />
-          <FormField
-            ref={confirmPasswordRef}
-            label="Confirm Password"
-            name="confirmPassword"
-            secureTextEntry
-            returnKeyLabel="Done"
-            returnKeyType="done"
-          />
-          <Footer>
-            <Submit label="Next" {...{ isLoading }} />
-            <Divider />
-          </Footer>
-        </Form>
-      </Container>
+      <VirtualScroll>
+        <Container>
+          <Title title="Password Reset" />
+          <Form
+            {...{ validationSchema }}
+            initialValues={{
+              confirmPassword: '',
+              password: '',
+            }}
+            onSubmit={({ confirmPassword, password }) => {
+              reset({
+                confirmPassword,
+                email: params.email,
+                hash: params.hash,
+                password,
+              });
+            }}>
+            <FormField
+              label="Password"
+              name="password"
+              secureTextEntry
+              returnKeyLabel="Next"
+              returnKeyType="next"
+              onSubmitEditing={() => confirmPasswordRef.current?.focus()}
+            />
+            <FormField
+              ref={confirmPasswordRef}
+              label="Confirm Password"
+              name="confirmPassword"
+              secureTextEntry
+              returnKeyLabel="Done"
+              returnKeyType="done"
+            />
+            <Footer>
+              <Divider />
+              <Submit label="Next" {...{ isLoading }} />
+              <Divider />
+            </Footer>
+          </Form>
+        </Container>
+      </VirtualScroll>
     </>
   );
 }

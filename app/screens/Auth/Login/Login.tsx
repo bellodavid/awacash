@@ -10,9 +10,11 @@ import {
   Form,
   FormCheck,
   FormField,
+  Header,
   Submit,
   Text,
   Title,
+  VirtualScroll,
 } from 'components';
 import { setEmail, setRememberMe, useDispatch, useSelector } from 'store';
 import { layout } from 'constant';
@@ -40,67 +42,72 @@ export default function Login({
   });
 
   return (
-    <Container header>
-      <Title title="Login" />
-      <Form
-        validationSchema={loginValidationSchema}
-        initialValues={{
-          email: email,
-          password: '',
-          remember: rememberMe,
-        }}
-        onSubmit={({ email: mail, password, remember }) => {
-          dispatch(setEmail(mail));
-          dispatch(setRememberMe(remember));
+    <>
+      <Header />
+      <VirtualScroll>
+        <Container>
+          <Title title="Login" />
+          <Form
+            validationSchema={loginValidationSchema}
+            initialValues={{
+              email: email,
+              password: '',
+              remember: rememberMe,
+            }}
+            onSubmit={({ email: mail, password, remember }) => {
+              dispatch(setEmail(mail));
+              dispatch(setRememberMe(remember));
 
-          login({ email: mail, password });
-        }}>
-        <FormField
-          name="email"
-          label="Email"
-          symbol="@"
-          icon="message"
-          onSubmitEditing={() => passwordRef.current?.focus()}
-        />
-        <FormField
-          ref={passwordRef}
-          name="password"
-          label="Password"
-          icon="lock"
-          secureTextEntry={showPass}
-          rightIcon={showPass ? 'eye' : 'eye-slash'}
-          onRightIconPress={() => setShowPass(i => !i)}
-        />
-        <View
-          style={{
-            alignItems: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
-          <FormCheck name="remember" label="Keep me signed in" />
-          <Text
-            textTransform="capitalize"
-            size={fonts.subhead}
-            variant="bold-700"
-            onPress={() => {
-              navigation.navigate('RequestResetOTP');
+              login({ email: mail, password });
             }}>
-            Forgot Password?
-          </Text>
-        </View>
-        <Divider space="xxl" />
-        <Submit label="Login" {...{ isLoading }} />
-        <Divider />
-        <ActionText
-          action="Sign In"
-          question="Don't have an account?"
-          onPress={() => {
-            navigation.navigate('SignUp');
-          }}
-        />
-        <Divider />
-      </Form>
-      <Biometric />
-    </Container>
+            <FormField
+              name="email"
+              label="Email"
+              symbol="@"
+              icon="message"
+              onSubmitEditing={() => passwordRef.current?.focus()}
+            />
+            <FormField
+              ref={passwordRef}
+              name="password"
+              label="Password"
+              icon="lock"
+              secureTextEntry={showPass}
+              rightIcon={showPass ? 'eye' : 'eye-slash'}
+              onRightIconPress={() => setShowPass(i => !i)}
+            />
+            <View
+              style={{
+                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+              }}>
+              <FormCheck name="remember" label="Keep me signed in" />
+              <Text
+                textTransform="capitalize"
+                size={fonts.subhead}
+                variant="bold-700"
+                onPress={() => {
+                  navigation.navigate('RequestResetOTP');
+                }}>
+                Forgot Password?
+              </Text>
+            </View>
+            <Divider space="xxl" />
+            <Submit label="Login" {...{ isLoading }} />
+            <Divider />
+            <ActionText
+              action="Sign In"
+              question="Don't have an account?"
+              onPress={() => {
+                navigation.navigate('SignUp');
+              }}
+            />
+            <Divider />
+          </Form>
+          <Biometric />
+        </Container>
+      </VirtualScroll>
+    </>
   );
 }

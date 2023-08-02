@@ -1,7 +1,16 @@
 import { StyleSheet, View } from 'react-native';
 import { useState } from 'react';
 
-import { Container, Divider, Form, FormField, Header, Submit, Title } from 'components';
+import {
+  Container,
+  Divider,
+  Form,
+  FormField,
+  Header,
+  Submit,
+  Title,
+  VirtualScroll,
+} from 'components';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
 import { emailValidationSchema } from 'utils';
 import { useSendPasswordVerificationMutation, useService } from 'service';
@@ -26,25 +35,27 @@ export default function RequestResetOTP({
   return (
     <>
       <Header />
-      <Container>
-        <Title
-          title="Password Reset"
-          subtitle="Please enter your registered email address."
-        />
-        <Form
-          validationSchema={emailValidationSchema}
-          initialValues={{ email: '' }}
-          onSubmit={({ email }) => {
-            reset();
-            setMail(email);
-            sendCode({ email });
-          }}>
-          <FormField name="email" label="Email" />
-          <Divider space="xl" />
-          <Submit label="Continue" {...{ isLoading }} />
-        </Form>
-        <View style={styles.container} />
-      </Container>
+      <VirtualScroll>
+        <Container>
+          <Title
+            title="Password Reset"
+            subtitle="Please enter your registered email address."
+          />
+          <Form
+            validationSchema={emailValidationSchema}
+            initialValues={{ email: '' }}
+            onSubmit={({ email }) => {
+              reset();
+              setMail(email);
+              sendCode({ email });
+            }}>
+            <FormField name="email" label="Email" />
+            <Divider space="xl" />
+            <Submit label="Continue" {...{ isLoading }} />
+          </Form>
+          <View style={styles.container} />
+        </Container>
+      </VirtualScroll>
     </>
   );
 }
