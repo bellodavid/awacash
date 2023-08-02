@@ -1,18 +1,19 @@
-import { StyleSheet, View } from 'react-native';
-
-import { Container } from 'components';
+import { PinNumpad } from 'components';
+import { StackNavigationProps, TransferRoutes } from 'navigation';
 // import {} from 'navigation';
 
-export default function AwacashTransferPin(): JSX.Element {
+export default function AwacashTransferPin({
+  navigation,
+}: StackNavigationProps<TransferRoutes, 'AwacashTransferPin'>): JSX.Element {
   return (
-    <Container>
-      <View style={styles.container} />
-    </Container>
+    <PinNumpad
+      title="Transaction Pin"
+      subtitle="Enter your pin"
+      onPinCompleted={pin => {
+        if (pin.length >= 4) {
+          navigation.navigate('TransferSuccess');
+        }
+      }}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

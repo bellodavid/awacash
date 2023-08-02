@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 
 import { Container } from 'components';
-import {} from 'navigation';
+// import {} from 'navigation';
 
 export default function BankSelectAccount(): JSX.Element {
   return (
