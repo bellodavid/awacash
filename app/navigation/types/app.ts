@@ -4,6 +4,7 @@ export type AppRoutes = {
   TabStack: NavigatorScreenParams<TabRoutes>;
   HomeStack: NavigatorScreenParams<HomeRoutes>;
   MoreStack: NavigatorScreenParams<MoreRoutes>;
+  KYCStack: NavigatorScreenParams<KYCRoutes>;
 };
 
 export type TabRoutes = {
@@ -34,6 +35,7 @@ export type MoreRoutes = {
 };
 
 export type KYCRoutes = {
+  AccountSetup: undefined;
   VerifyBVN: undefined;
   ValidateBVN: undefined;
   Address: undefined;
