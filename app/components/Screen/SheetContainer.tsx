@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     flex: 1,
     height: '85%',
+    paddingTop: 40,
     position: 'absolute',
     width: layout.window.width,
   },

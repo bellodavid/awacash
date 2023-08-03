@@ -4,7 +4,6 @@ import { useHeaderHeight } from 'hooks';
 import { layout } from 'constant';
 import { Divider, Text } from 'components';
 import { Icon } from 'assets';
-
 const { fonts, spacing, misc } = layout;
 
 interface Props {
@@ -13,6 +12,7 @@ interface Props {
 
 export default function HomeHeader({ image }: Props): JSX.Element | null {
   const { insets, headerHeight } = useHeaderHeight();
+
   return (
     <>
       <View style={{ height: insets.top }} />

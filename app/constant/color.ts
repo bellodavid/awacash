@@ -22,6 +22,8 @@ export interface ThemeType {
   darkGrey: value;
   inputBorder: value;
   input: value;
+  orange: value;
+  primaryGrey: value;
 }
 
 export const pallets = {
@@ -31,6 +33,7 @@ export const pallets = {
   card: '#F3F3F7',
   dark: '#2C363F',
   darkGrey: '#8a8d90',
+  deactivate: '#F48971',
   errorYellow: '#FFA927',
   green: '#06D6A0', //#00FFDD
   grey: '#BBBBBB', //F4F0EF
@@ -38,8 +41,10 @@ export const pallets = {
   inactive: '#E3E3E3',
   neutral: '#F4F5F7',
   notification: '#2793EB',
+  orange: '#FDAA49',
   primary: '#2793EB',
   primaryBlack: '#292D32',
+  primaryGrey: '#FAFAFA',
   red: '#FF0058', //#A22C29 #A4243B
   secondary: '#2AAE74',
   text: '#0B0B0B',
