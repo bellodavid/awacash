@@ -3,7 +3,7 @@ import Svg, { Path, SvgProps } from 'react-native-svg';
 import { useTheme } from 'hooks';
 
 interface Props extends SvgProps {
-  name?: IconName;
+  name: IconName;
   color?: string;
   size?: number;
   onPress?: () => void;

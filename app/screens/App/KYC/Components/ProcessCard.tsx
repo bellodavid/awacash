@@ -7,7 +7,7 @@ import { Text } from 'components';
 interface ProcessCardProp {
   color?: string;
   label?: string;
-  iconName?: string;
+  icon: IconName;
   button?: string;
   processed?: boolean;
   onPress?: () => void;
@@ -15,7 +15,7 @@ interface ProcessCardProp {
 }
 const ProcessCard = ({
   label,
-  iconName,
+  icon,
   button,
   processed,
   color,
@@ -24,7 +24,7 @@ const ProcessCard = ({
   return (
     <View style={styles.container}>
       <View style={styles.itemContainer}>
-        <Icon name={iconName} color={color} size={20} />
+        <Icon name={icon} color={color} size={20} />
         <View style={{ width: 150 }}>
           <Text variant="reg-400">{label}</Text>
         </View>

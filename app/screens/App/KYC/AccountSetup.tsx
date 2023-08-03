@@ -15,27 +15,27 @@ export default function AccountSetup(): JSX.Element {
       <SheetContainer>
         <ProcessCard
           color={pallets.secondary}
-          iconName="key-square"
+          icon="key-square"
           processed
           label="Add your BVN"
           button="Done"
         />
         <ProcessCard
           color={pallets.secondary}
-          iconName="camera"
+          icon="camera"
           processed
           label="Take a selfie"
           button="Done"
         />
         <ProcessCard
           color={pallets.orange}
-          iconName="receipt-2"
+          icon="receipt-2"
           label="Upload utility bill
           and valid ID"
           button="Not Done"
         />
         <ProcessCard
-          iconName="biometric-android-fingerprint"
+          icon="biometric-android-fingerprint"
           label="Enable Biometrics"
           button="Not Done"
         />
