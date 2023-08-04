@@ -1,5 +1,5 @@
 import { TextInput, View } from 'react-native';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { Biometric } from '../Components';
 
@@ -26,6 +26,7 @@ export default function Login({
   navigation,
 }: StackNavigationProps<AuthRoutes, 'Login'>): JSX.Element {
   const { email, rememberMe } = useSelector(state => state.persisted);
+  const [showPass, setShowPass] = useState(true);
   const [login, { isLoading, isError, isSuccess, error }] = useLoginMutation();
 
   const passwordRef = useRef<TextInput>(null);
@@ -66,7 +67,9 @@ export default function Login({
           name="password"
           label="Password"
           icon="lock"
-          secureTextEntry
+          secureTextEntry={showPass}
+          rightIcon={showPass ? 'eye' : 'eye-slash'}
+          onRightIconPress={() => setShowPass(i => !i)}
         />
         <View
           style={{

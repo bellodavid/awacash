@@ -2,11 +2,12 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { useHeaderHeight, useTheme } from 'hooks';
-import { layout } from 'constant';
-import { Text } from 'components';
+import { Text } from '../General';
 
-const { padding } = layout.spacing;
+import { useHeaderHeight, useTheme } from 'hooks';
+import { layout, pallets } from 'constant';
+
+const { fonts, spacing } = layout;
 
 export interface AltHeaderProps {
   color?: string;
@@ -21,7 +22,7 @@ export default function AltHeader({
   onPress,
   color: Color,
   hideBackIcon,
-  iconColor,
+  iconColor = pallets.white,
   transparent,
   label,
 }: AltHeaderProps): JSX.Element | null {
@@ -31,7 +32,7 @@ export default function AltHeader({
 
   const handleBackIcon = () => navigation.canGoBack() && navigation.goBack();
 
-  const backgroundColor = transparent ? 'transparent' : Color || color.card;
+  const backgroundColor = transparent ? 'transparent' : Color || color.primary;
 
   return (
     <>
@@ -42,7 +43,7 @@ export default function AltHeader({
           {
             backgroundColor,
             height: headerHeight - insets.top,
-            paddingHorizontal: padding / 2,
+            paddingHorizontal: spacing.padding / 2,
           },
         ]}>
         {navigation.canGoBack() && !hideBackIcon && (
@@ -51,20 +52,20 @@ export default function AltHeader({
               handleBackIcon();
               onPress && onPress();
             }}>
-            <Ionicons
-              size={26}
-              color={iconColor}
-              style={{ left: 20, top: 10 }}
-              name="arrow-back-outline"
-            />
+            <Ionicons size={20} color={iconColor} name="arrow-back-outline" />
           </TouchableOpacity>
         )}
         <View style={styles.label}>
-          <Text color={iconColor} variant="bold-700" size={24} textTransform="capitalize">
+          <Text
+            color={iconColor}
+            variant="bold-700"
+            size={fonts.title3}
+            textTransform="capitalize">
             {label}
           </Text>
         </View>
       </View>
+      <View style={{ backgroundColor, height: spacing.l }} />
     </>
   );
 }
@@ -73,16 +74,13 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
     flexDirection: 'row',
-    top: 10,
   },
   label: {
     alignItems: 'center',
-    bottom: 0,
     justifyContent: 'center',
     left: 0,
     position: 'absolute',
     right: 0,
-    top: 10,
     zIndex: -1,
   },
 });

@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { useFormikContext } from 'formik';
 import { TextInput } from 'react-native';
 
-import FormInput, { FormInputProps } from './FormInput';
+import FormMaskInput, { FormMaskInputProps } from './FormMaskInput';
 
 export interface FieldKeys {
   accountNumber: string;
@@ -43,10 +43,10 @@ export interface FieldKeys {
   country: string;
   id: string;
   idType: string;
-  details: string;
+  amount: string;
 }
 
-interface FormFieldProps extends FormInputProps {
+interface FormMaskFieldProps extends FormMaskInputProps {
   name: keyof FieldKeys;
   label: string;
   labelColor?: string;
@@ -62,7 +62,7 @@ interface FormFieldProps extends FormInputProps {
   onRightIconPress?: () => void;
 }
 
-const FormField = forwardRef<TextInput, FormFieldProps>(
+const FormMaskField = forwardRef<TextInput, FormMaskFieldProps>(
   (
     {
       icon,
@@ -79,7 +79,7 @@ const FormField = forwardRef<TextInput, FormFieldProps>(
       noteVisible,
       marginBottom,
       ...props
-    }: FormFieldProps,
+    }: FormMaskFieldProps,
     ref,
   ): JSX.Element | null => {
     const { setFieldTouched, setFieldValue, errors, touched, handleSubmit, values } =
@@ -90,8 +90,8 @@ const FormField = forwardRef<TextInput, FormFieldProps>(
 
     return (
       <>
-        <FormInput
-          onChangeText={text => {
+        <FormMaskInput
+          onChangeText={(_, text) => {
             setFieldValue(name, text);
             onTextChange?.(text);
           }}
@@ -122,4 +122,4 @@ const FormField = forwardRef<TextInput, FormFieldProps>(
   },
 );
 
-export default FormField;
+export default FormMaskField;

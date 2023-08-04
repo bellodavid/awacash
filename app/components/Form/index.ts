@@ -5,3 +5,4 @@ export { default as FormPin } from './FormPin';
 export { default as FormCheck } from './FormCheck';
 export { default as FormPicker } from './FormPicker';
 export { default as FormDocPicker } from './FormDocPicker';
+export { default as FormMaskField } from './FormMaskField';

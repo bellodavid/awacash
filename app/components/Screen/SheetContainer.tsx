@@ -2,6 +2,9 @@ import { StyleSheet, View } from 'react-native';
 
 import { useTheme } from 'hooks';
 import { layout } from 'constant';
+
+const { spacing, window } = layout;
+
 interface SheetContainerProps {
   children: React.ReactNode;
 }
@@ -18,13 +21,11 @@ export default function SheetContainer({ children }: SheetContainerProps): JSX.E
 
 const styles = StyleSheet.create({
   container: {
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    borderTopLeftRadius: spacing.l,
+    borderTopRightRadius: spacing.l,
     bottom: 0,
     flex: 1,
-    height: '85%',
-    paddingTop: 40,
-    position: 'absolute',
-    width: layout.window.width,
+    marginTop: -spacing.l,
+    width: window.width,
   },
 });

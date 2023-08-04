@@ -3,10 +3,10 @@ import {
   ActivityIndicator,
   StyleSheet,
   TextInput,
-  TextInputProps,
   TouchableOpacity,
   View,
 } from 'react-native';
+import MaskInput, { MaskInputProps, createNumberMask } from 'react-native-mask-input';
 
 import { Text } from '../General';
 
@@ -17,10 +17,9 @@ import { useTheme } from 'hooks';
 const { height, inputRadius, borderSize } = layout.input;
 const { fonts } = layout;
 
-export interface FormInputProps extends TextInputProps {
+export interface FormMaskInputProps extends MaskInputProps {
   label: string;
   value?: string;
-  onChangeText?: (text: string) => void;
   error?: boolean;
   errorMessage?: string;
   marginBottom?: number;
@@ -40,7 +39,14 @@ export interface FormInputProps extends TextInputProps {
   editable?: boolean;
 }
 
-const FormInput = forwardRef<TextInput, FormInputProps>(function (
+const nairaMask = createNumberMask({
+  delimiter: ',',
+  precision: 0,
+  prefix: ['₦ '],
+  separator: '.',
+});
+
+const FormMaskInput = forwardRef<TextInput, FormMaskInputProps>(function (
   {
     label,
     value,
@@ -62,7 +68,7 @@ const FormInput = forwardRef<TextInput, FormInputProps>(function (
     noteColor,
     noteWeight,
     ...props
-  }: FormInputProps,
+  }: FormMaskInputProps,
   ref,
 ): JSX.Element | null {
   const { color } = useTheme();
@@ -88,7 +94,8 @@ const FormInput = forwardRef<TextInput, FormInputProps>(function (
             borderColor: disabled ? color.border : error ? color.red : color.transparent,
           },
         ]}>
-        <TextInput
+        <MaskInput
+          mask={nairaMask}
           editable={!disabled}
           placeholder={placeholder || label}
           placeholderTextColor={labelColor || pallets.grey2}
@@ -96,6 +103,8 @@ const FormInput = forwardRef<TextInput, FormInputProps>(function (
             styles.input,
             {
               color: disabled ? color.border : color.text,
+              fontFamily: 'DMSansRegular',
+              height: '100%',
             },
           ]}
           {...{ onChangeText, ref, value, ...props }}
@@ -154,14 +163,12 @@ const styles = StyleSheet.create({
     borderRadius: inputRadius,
     borderWidth: borderSize,
     flexDirection: 'row',
-    maxHeight: height * 3,
-    minHeight: height,
+    height,
     overflow: 'hidden',
     paddingHorizontal: 10,
   },
   input: {
     flex: 1,
-    fontFamily: 'DMSansRegular',
   },
   note: {
     alignItems: 'flex-end',
@@ -169,4 +176,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FormInput;
+export default FormMaskInput;

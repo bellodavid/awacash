@@ -89,3 +89,16 @@ export const handleError = (error: IError) => {
 
   return errorMessage;
 };
+
+export const getTimeOfDay = (): string => {
+  const currentTime = new Date();
+  const hour = currentTime.getHours();
+
+  if (hour >= 5 && hour < 12) {
+    return 'morning';
+  } else if (hour >= 12 && hour < 18) {
+    return 'afternoon';
+  } else {
+    return 'evening';
+  }
+};
