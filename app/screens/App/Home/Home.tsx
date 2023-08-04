@@ -1,4 +1,10 @@
-import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  RefreshControl,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Lottie from 'lottie-react-native';
 import Animated, {
   useAnimatedRef,
@@ -15,17 +21,22 @@ import { layout, pallets } from 'constant';
 import { formatCurrency, loopedColor } from 'utils';
 import { Icon, lottie } from 'assets';
 import { useTheme } from 'hooks';
+import { useGetAccountsQuery } from 'service/customer';
+import { useSelector } from 'store';
 
 const { cards, spacing, fonts, misc } = layout;
 
 export default function Home({
   navigation,
 }: RootNavigationProp<AppRoutes, TabRoutes, 'Home'>): JSX.Element {
-  const aref = useAnimatedRef<Animated.FlatList<number | null>>();
+  const accountQuery = useGetAccountsQuery();
+
+  const { accounts, user } = useSelector(state => state.auth);
+
+  const aref = useAnimatedRef<Animated.FlatList<CustomerAccountData | null>>();
   const { color } = useTheme();
   const translateX = useSharedValue(0);
 
-  const slides = [1, 2, 3];
   const scrollHandler = useAnimatedScrollHandler(event => {
     translateX.value = event.contentOffset.x;
   });
@@ -33,24 +44,35 @@ export default function Home({
   return (
     <>
       <HomeHeader image="https://source.unsplash.com/aoEwuEH7YAs/1000x1000" />
-      <VirtualScroll>
+      <VirtualScroll
+        refreshControl={
+          <RefreshControl
+            colors={[pallets.primary, pallets.red]}
+            tintColor={pallets.primary}
+            titleColor={pallets.primary}
+            onRefresh={() => {
+              accountQuery.refetch();
+            }}
+            refreshing={accountQuery.isLoading}
+          />
+        }>
         <Container paddingHorizontal={0}>
           <Animated.FlatList
             ref={aref}
             horizontal
-            data={slides}
+            data={accounts || []}
             ListHeaderComponent={<View style={{ width: spacing.padding }} />}
             showsHorizontalScrollIndicator={false}
             onScroll={scrollHandler}
             decelerationRate="fast"
             snapToInterval={cards.cardWidth + spacing.padding}
-            renderItem={({ index }) => {
+            renderItem={({ index, item }) => {
               return (
                 <AccountCard
-                  accountNumber="0012234455"
-                  balance="0"
-                  name="Silver George"
-                  width={cards.cardWidth}
+                  accountNumber={item?.accountNumber || ''}
+                  balance={item?.withdrawableAmount || '0'}
+                  name={user?.fullName || ''}
+                  width={accounts?.length > 1 ? cards.cardWidth : cards.cardWidthMax}
                   marginRight={spacing.padding}
                   backgroundColor={loopedColor(index, [
                     pallets.primary,
@@ -62,7 +84,7 @@ export default function Home({
             }}
           />
           <View style={styles.pagination}>
-            {slides.map((_, index) => (
+            {accounts?.map((_, index) => (
               <AnimPaginator key={index} {...{ index, translateX }} />
             ))}
           </View>
@@ -80,7 +102,6 @@ export default function Home({
                 return (
                   <View style={{ alignItems: 'center' }}>
                     <TouchableOpacity
-                      disabled
                       onPress={() => {
                         if (item.route) {
                           navigation.navigate('HomeStack', item.route);

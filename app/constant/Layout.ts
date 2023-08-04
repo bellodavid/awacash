@@ -28,6 +28,7 @@ export default {
     cardHeight: 175,
     cardRadius: 8,
     cardWidth: width - 16 * 4,
+    cardWidthMax: width - 16 * 2,
   },
   dimension: {
     isLandscape: height < width,
