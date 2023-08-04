@@ -12,7 +12,6 @@ interface Props {
 
 export default function HomeHeader({ image }: Props): JSX.Element | null {
   const { insets, headerHeight } = useHeaderHeight();
-
   return (
     <>
       <View style={{ height: insets.top }} />

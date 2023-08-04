@@ -1,12 +1,12 @@
 import { View } from 'react-native';
 
-import AltHeader from './Components/AltHeader';
 import ProcessCard from './Components/ProcessCard';
 
 import { Button } from 'components';
 import { BackgroundGradient } from 'components/Screen/BackgroundGradient';
 import SheetContainer from 'components/Screen/SheetContainer';
 import { pallets } from 'constant';
+import AltHeader from 'components/Screen/AltHeader';
 
 export default function AccountSetup(): JSX.Element {
   return (
