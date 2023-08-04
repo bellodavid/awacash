@@ -4,6 +4,7 @@ import { AppRoutes } from '../types';
 
 import Tab from './Tab';
 import { HomeStack, MoreStack } from './Stacks';
+
 import AccountSetup from 'screens/App/KYC/AccountSetup';
 
 const { Navigator, Screen, Group } = createStackNavigator<AppRoutes>();
