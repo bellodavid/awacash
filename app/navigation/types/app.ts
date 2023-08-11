@@ -37,6 +37,7 @@ export type MoreRoutes = {
 export type KYCRoutes = {
   AccountSetup: undefined;
   VerifyBVN: undefined;
+  KYCSuccess: { message: string };
   ValidateBVN: undefined;
   Address: undefined;
   ValidID: undefined;

@@ -50,7 +50,8 @@ export default function LoadApp(): JSX.Element | null {
       <BottomSheetModalProvider>
         <NavigationContainer {...{ theme }}>
           <SafeAreaProvider>
-            {isAuthenticated ? <AppNavigator /> : <AuthNavigator />}
+            <AppNavigator />
+            {/* {isAuthenticated ? <AppNavigator /> : <AuthNavigator />} */}
             <StatusBar style="dark" backgroundColor="transparent" translucent />
           </SafeAreaProvider>
         </NavigationContainer>

@@ -8,3 +8,4 @@ export { default as BottomSheetModal } from './BottomSheetModal';
 export { default as Footer } from './Footer';
 export { default as AltHeader } from './AltHeader';
 export { default as SheetContainer } from './SheetContainer';
+export { default as BackgroundGradient } from './BackgroundGradient';

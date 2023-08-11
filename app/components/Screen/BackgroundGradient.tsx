@@ -6,9 +6,9 @@ interface LinearGradientProp {
   children?: React.ReactNode;
 }
 
-export const BackgroundGradient = ({
+export default function BackgroundGradient({
   children,
-}: LinearGradientProp): JSX.Element | null => {
+}: LinearGradientProp): JSX.Element | null {
   return (
     <View style={styles.container}>
       {children}
@@ -20,7 +20,7 @@ export const BackgroundGradient = ({
       />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

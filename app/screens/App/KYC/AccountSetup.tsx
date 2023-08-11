@@ -1,47 +1,51 @@
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
 
+import { kycSection } from './Data';
 import ProcessCard from './Components/ProcessCard';
 
-import { Button } from 'components';
-import { BackgroundGradient } from 'components/Screen/BackgroundGradient';
-import SheetContainer from 'components/Screen/SheetContainer';
-import { pallets } from 'constant';
-import AltHeader from 'components/Screen/AltHeader';
+import { AppRoutes, KYCRoutes, RootNavigationProp } from 'navigation';
+import {
+  AltHeader,
+  BackgroundGradient,
+  Button,
+  Container,
+  SheetContainer,
+  VirtualScroll,
+} from 'components';
 
-export default function AccountSetup(): JSX.Element {
+export default function AccountSetup({
+  navigation,
+}: RootNavigationProp<AppRoutes, KYCRoutes, 'AccountSetup'>): JSX.Element {
   return (
     <BackgroundGradient>
       <AltHeader transparent iconColor="white" label="Account Set Up" />
       <SheetContainer>
-        <ProcessCard
-          color={pallets.secondary}
-          icon="key-square"
-          processed
-          label="Add your BVN"
-          button="Done"
-        />
-        <ProcessCard
-          color={pallets.secondary}
-          icon="camera"
-          processed
-          label="Take a selfie"
-          button="Done"
-        />
-        <ProcessCard
-          color={pallets.orange}
-          icon="receipt-2"
-          label="Upload utility bill
-          and valid ID"
-          button="Not Done"
-        />
-        <ProcessCard
-          icon="biometric-android-fingerprint"
-          label="Enable Biometrics"
-          button="Not Done"
-        />
-        <View style={{ marginTop: 30 }}>
-          <Button width="80%" label="Continue" />
-        </View>
+        <VirtualScroll>
+          <Container>
+            <FlatList
+              data={kycSection}
+              showsVerticalScrollIndicator={false}
+              renderItem={({ item }) => {
+                return (
+                  <ProcessCard
+                    onPress={() => {
+                      if (item.route) {
+                        navigation.navigate('KYCStack', item.route);
+                      }
+                    }}
+                    label={item.label}
+                    icon={item.icon}
+                    button={item.button}
+                    iconColor={item.color}
+                  />
+                );
+              }}
+            />
+            <View>
+              <Button width="80%" label="Continue" />
+            </View>
+          </Container>
+        </VirtualScroll>
       </SheetContainer>
     </BackgroundGradient>
   );

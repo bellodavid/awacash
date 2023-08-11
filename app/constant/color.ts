@@ -23,7 +23,7 @@ export interface ThemeType {
   inputBorder: value;
   input: value;
   orange: value;
-  primaryGrey: value;
+  grey4: value;
 }
 
 export const pallets = {
@@ -38,6 +38,7 @@ export const pallets = {
   green: '#06D6A0', //#00FFDD
   grey: '#BBBBBB', //F4F0EF
   grey2: '#9A9999', //F4F0EF
+  grey4: '#FAFAFA',
   inactive: '#E3E3E3',
   lightBlue: '#E0F1FF',
   neutral: '#F4F5F7',
@@ -45,7 +46,6 @@ export const pallets = {
   orange: '#FDAA49',
   primary: '#2793EB',
   primaryBlack: '#292D32',
-  primaryGrey: '#FAFAFA',
   red: '#FF0058', //#A22C29 #A4243B
   secondary: '#2AAE74',
   text: '#0B0B0B',

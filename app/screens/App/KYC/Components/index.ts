@@ -1,1 +1,1 @@
-export { default as AccountSetup } from '../AccountSetup';
+export { default as ProcessCard } from './ProcessCard';

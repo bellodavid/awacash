@@ -1,72 +1,81 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { pallets } from 'constant';
+import { layout, pallets } from 'constant';
 import { Icon } from 'assets';
 import { Text } from 'components';
+import { useTheme } from 'hooks';
 
 interface ProcessCardProp {
-  color?: string;
+  iconColor?: string;
   label?: string;
   icon: IconName;
   button?: string;
   processed?: boolean;
   onPress?: () => void;
   size?: number;
+  marginBottom?: number;
 }
-const ProcessCard = ({
+export default function ProcessCard({
   label,
   icon,
+  onPress,
   button,
   processed,
-  color,
-}: ProcessCardProp): JSX.Element => {
+  iconColor,
+  marginBottom = 16,
+}: ProcessCardProp): JSX.Element {
   const backgroundColor = processed ? pallets.secondary : pallets.deactivate;
+  const { color } = useTheme();
   return (
-    <View style={styles.container}>
-      <View style={styles.itemContainer}>
-        <Icon name={icon} color={color} size={20} />
-        <View style={{ width: 150 }}>
-          <Text variant="reg-400">{label}</Text>
+    <>
+      <TouchableOpacity
+        {...{ onPress }}
+        activeOpacity={0.8}
+        style={[
+          styles.container,
+          styles.row,
+          { backgroundColor: color.altBG, marginBottom },
+        ]}>
+        <View style={[styles.row, { flex: 0.75 }]}>
+          <Icon name={icon} color={iconColor} size={20} />
+          <View style={{ marginLeft: 16 }}>
+            <Text variant="reg-400" size={layout.fonts.subhead}>
+              {label}
+            </Text>
+          </View>
         </View>
-        <Pressable
-          style={{
-            alignItems: 'center',
-            backgroundColor,
-            borderRadius: 8,
-            height: 30,
-            width: 70,
-          }}>
-          <Text
-            variant="reg-400"
-            size={13}
-            style={{ alignSelf: 'center', color: pallets.white, marginTop: 6 }}>
-            {button}
-          </Text>
-        </Pressable>
-      </View>
-    </View>
+        <View style={{ flex: 0.3 }}>
+          <Pressable
+            style={{
+              alignItems: 'center',
+              alignSelf: 'center',
+              backgroundColor,
+              borderRadius: 8,
+              padding: 8,
+              width: 70,
+            }}>
+            <Text
+              color={pallets.white}
+              variant="reg-400"
+              size={layout.fonts.caption2}
+              style={{ alignSelf: 'center' }}>
+              {button}
+            </Text>
+          </Pressable>
+        </View>
+      </TouchableOpacity>
+    </>
   );
-};
-
-export default ProcessCard;
+}
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: 'center',
-    marginTop: 15,
-    width: '80%',
-    zIndex: 1,
+    borderRadius: 8,
+    justifyContent: 'space-between',
+    padding: 16,
   },
-  itemContainer: {
-    alignItems: 'center',
-    backgroundColor: pallets.primaryGrey,
-    borderColor: pallets.primaryGrey,
-    borderRadius: 5,
-    borderWidth: 0.1,
+  row: {
+    aligntItems: 'center',
     flexDirection: 'row',
-    height: 70,
-    justifyContent: 'space-around',
-    padding: 10,
-    width: '100%',
   },
 });

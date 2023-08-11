@@ -3,9 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AppRoutes } from '../types';
 
 import Tab from './Tab';
-import { HomeStack, MoreStack } from './Stacks';
-
-import AccountSetup from 'screens/App/KYC/AccountSetup';
+import { HomeStack, KYCStack, MoreStack } from './Stacks';
 
 const { Navigator, Screen, Group } = createStackNavigator<AppRoutes>();
 
@@ -19,7 +17,7 @@ export default function AppNavigator() {
         <Screen name="TabStack" component={Tab} />
         <Screen name="HomeStack" component={HomeStack} />
         <Screen name="MoreStack" component={MoreStack} />
-        <Screen name="KYCStack" component={AccountSetup} />
+        <Screen name="KYCStack" component={KYCStack} />
       </Group>
     </Navigator>
   );
