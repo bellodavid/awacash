@@ -19,32 +19,33 @@ export default function More(): JSX.Element {
   return (
     <>
       <MoreHeader />
-      <VirtualScroll bounces={false}>
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <TouchableOpacity>
-              <View style={styles.imgContainer}>
-                <Icon name="user" color={pallets.white} size={20} />
-                <Image
-                  source={{ uri: 'https://source.unsplash.com/aoEwuEH7YAs/1000x1000' }}
-                  style={styles.image}
-                />
-                <View style={styles.edit}>
-                  <Icon name="edit-2" size={16} color={pallets.primary} />
-                </View>
-              </View>
-            </TouchableOpacity>
-            <Divider space="t" />
-            <Text variant="bold-700" color={pallets.white} size={fonts.subhead}>
-              Silver George
-            </Text>
-            <Text size={fonts.caption2} color={pallets.grey3}>
-              Status: Level 1
-            </Text>
-            <View style={{ height: 20 }} />
-          </View>
+      <>
+        <VirtualScroll bounces={false}>
           <Container>
-            <Divider />
+            <View style={styles.header}>
+              <Divider space="m" />
+              <TouchableOpacity>
+                <View style={styles.imgContainer}>
+                  <Icon name="user" color={pallets.white} size={20} />
+                  <Image
+                    source={{ uri: 'https://source.unsplash.com/aoEwuEH7YAs/1000x1000' }}
+                    style={styles.image}
+                  />
+                  <View style={styles.edit}>
+                    <Icon name="edit-2" size={16} color={pallets.white} />
+                  </View>
+                </View>
+              </TouchableOpacity>
+              <Divider space="t" />
+              <Text variant="bold-700" color={pallets.black} size={fonts.subhead}>
+                Silver George
+              </Text>
+              <Divider space="t" />
+              <Text size={fonts.caption2} color={pallets.grey2}>
+                Status: Level 1
+              </Text>
+            </View>
+            <Divider space="xl" />
             <FlatList
               data={moreSection}
               ItemSeparatorComponent={() => <Divider />}
@@ -87,34 +88,31 @@ export default function More(): JSX.Element {
               }}
             />
           </Container>
-        </View>
-      </VirtualScroll>
+        </VirtualScroll>
+      </>
     </>
   );
 }
 
 const ICON_BOX = 20;
+const EDIT_ICON_BOX = 10;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   edit: {
     alignItems: 'center',
-    backgroundColor: pallets.white,
+    backgroundColor: pallets.primary,
     borderRadius: ICON_BOX / 2,
-    bottom: 10,
+    bottom: EDIT_ICON_BOX,
     height: ICON_BOX,
     justifyContent: 'center',
+    padding: EDIT_ICON_BOX,
     position: 'absolute',
     right: 0,
     width: ICON_BOX,
-    zIndex: 10,
+    zIndex: EDIT_ICON_BOX,
   },
   header: {
     alignItems: 'center',
-    backgroundColor: pallets.primary,
-    padding: spacing.padding,
   },
   image: {
     ...StyleSheet.absoluteFillObject,
@@ -124,19 +122,27 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     alignItems: 'center',
-    borderColor: pallets.white,
-    borderRadius: misc.avatarLarge / 2,
-    borderWidth: 0.5,
+    borderRadius: misc.avatarLarge,
     height: misc.avatarLarge,
     justifyContent: 'center',
     width: misc.avatarLarge,
   },
   sectionCard: {
     alignItems: 'center',
-    borderRadius: 8,
+    borderColor: pallets.border,
+    borderRadius: spacing.s,
+    borderWidth: 0.2,
+    elevation: 2,
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: spacing.l,
     paddingHorizontal: spacing.padding,
+    shadowColor: pallets.grey3,
+    shadowOffset: {
+      height: spacing.s,
+      width: 0,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: spacing.s,
   },
 });

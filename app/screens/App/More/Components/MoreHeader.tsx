@@ -1,14 +1,15 @@
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { Text } from 'components';
-import { useHeaderHeight } from 'hooks';
+import { useHeaderHeight, useTheme } from 'hooks';
 import { layout, pallets } from 'constant';
 import { Icon } from 'assets';
 
-const { padding } = layout.spacing;
+const { spacing, fonts } = layout;
 
 export default function MoreHeader(): JSX.Element | null {
   const { insets, headerHeight } = useHeaderHeight();
+  const { color } = useTheme();
 
   return (
     <>
@@ -19,12 +20,16 @@ export default function MoreHeader(): JSX.Element | null {
           {
             backgroundColor: pallets.primary,
             height: headerHeight - insets.top,
-            paddingHorizontal: padding / 2,
+            paddingHorizontal: spacing.padding / 2,
           },
         ]}>
         <View />
         <View style={styles.label}>
-          <Text color={pallets.white} variant="bold-700" textTransform="capitalize">
+          <Text
+            color={color.white}
+            variant="bold-700"
+            size={fonts.body}
+            textTransform="capitalize">
             More
           </Text>
         </View>
@@ -32,7 +37,7 @@ export default function MoreHeader(): JSX.Element | null {
           onPress={() => {
             console.log('notif');
           }}>
-          <Icon size={20} color={pallets.white} name="notification" />
+          <Icon size={spacing.m} color={color.primary} name="notification" />
         </TouchableOpacity>
       </View>
     </>
