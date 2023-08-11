@@ -68,6 +68,7 @@ export default {
     pagination: 40,
     pill: 48,
     toastHeight: 100,
+    width: 70,
   },
   numpad: {
     btnHeight: medium ? 55 : 50,

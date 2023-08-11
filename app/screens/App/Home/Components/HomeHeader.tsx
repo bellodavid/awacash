@@ -1,5 +1,4 @@
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import { useHeaderHeight } from 'hooks';
 import { layout, pallets } from 'constant';
@@ -16,7 +15,6 @@ interface Props {
 export default function HomeHeader({ image }: Props): JSX.Element | null {
   const { insets, headerHeight } = useHeaderHeight();
   const { user } = useSelector(state => state.auth);
-  const navigation = useNavigation();
 
   return (
     <>
@@ -31,7 +29,7 @@ export default function HomeHeader({ image }: Props): JSX.Element | null {
           },
         ]}>
         <View style={styles.row}>
-          <TouchableOpacity onPress={() => navigation.navigate('KYCStack')}>
+          <TouchableOpacity>
             <View style={styles.imgContainer}>
               <Icon name="user" color={pallets.grey} size={20} />
               {image ? <Image source={{ uri: image }} style={styles.image} /> : <View />}
