@@ -5,3 +5,4 @@ export { default as TakeSelfie } from './TakeSelfie';
 export { default as ValidateBVN } from './ValidateBVN';
 export { default as ValidID } from './ValidID';
 export { default as VerifyBVN } from './VerifyBVN';
+export { default as KYCSuccess } from './KYCSuccess';

@@ -10,7 +10,7 @@ import {
   Title,
 } from 'components';
 import { KYCRoutes, StackNavigationProps } from 'navigation';
-
+const message = 'I am here';
 export default function VerifyBVN({
   navigation,
 }: StackNavigationProps<KYCRoutes, 'VerifyBVN'>): JSX.Element {
@@ -23,6 +23,7 @@ export default function VerifyBVN({
         }}
         onSubmit={value => {
           console.log(value);
+          navigation.navigate('KYCSuccess', { message });
           Alert.alert('', 'Receive OTP for BVN verification?', [
             {
               isPreferred: true,
@@ -41,6 +42,12 @@ export default function VerifyBVN({
           ]);
         }}>
         <FormField label="BVN" name="bvn" placeholder="Enter BVN" />
+        <FormField
+          rightIcon="calendar"
+          label="Date of Birth"
+          name="date"
+          placeholder="dd/mm/yyyy"
+        />
         <Divider />
         <Submit label="Verify" />
         <Divider />

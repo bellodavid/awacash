@@ -42,7 +42,7 @@ export default function AccountSetup({
               }}
             />
             <View>
-              <Button width="80%" label="Continue" />
+              <Button label="Continue" />
             </View>
           </Container>
         </VirtualScroll>

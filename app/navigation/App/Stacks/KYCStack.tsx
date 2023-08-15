@@ -4,6 +4,7 @@ import {
   AccountSetup,
   Address,
   CaptureDoc,
+  KYCSuccess,
   TakeSelfie,
   VerifyBVN,
 } from 'screens/App/KYC';
@@ -24,6 +25,7 @@ export default function KYCSack() {
         <Screen name="VerifyBVN" component={VerifyBVN} />
         <Screen name="TakeSelfie" component={TakeSelfie} />
         <Screen name="CaptureDoc" component={CaptureDoc} />
+        <Screen name="KYCSuccess" component={KYCSuccess} />
         <Screen name="Address" component={Address} />
       </Group>
     </Navigator>
