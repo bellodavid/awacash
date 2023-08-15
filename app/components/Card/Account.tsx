@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Switch, View } from 'react-native';
+import { Image, StyleSheet, Switch, TouchableOpacity, View } from 'react-native';
 import { useState } from 'react';
 
 import { Text } from '../General';
@@ -16,6 +16,8 @@ interface Props {
   width?: number;
   marginRight?: number;
   backgroundColor?: string;
+  variant?: 'small';
+  onPress?: () => void;
 }
 
 export default function Account({
@@ -25,8 +27,56 @@ export default function Account({
   width,
   marginRight,
   backgroundColor,
+  variant,
+  onPress,
 }: Props): JSX.Element | null {
   const [enabled, setEnabled] = useState(false);
+
+  if (variant === 'small') {
+    return (
+      <TouchableOpacity
+        {...{ onPress }}
+        activeOpacity={0.75}
+        style={[
+          styles.container,
+          { backgroundColor: backgroundColor || pallets.primary, marginRight, width },
+        ]}>
+        <Text variant="bold-700" color={pallets.white}>
+          {name} - {accountNumber}
+        </Text>
+        <Divider space="l" />
+        <Text size={14} color={pallets.white}>
+          Available Balance
+        </Text>
+        <Text variant="bold-700" size={28} color={pallets.white}>
+          {enabled ? '₦******' : formatCurrency(balance)}
+        </Text>
+        <Divider space="m" />
+        <View style={styles.switchRow}>
+          <Text size={fonts.caption1} color={pallets.white}>
+            {enabled ? 'Show' : 'Hide'} available balance
+          </Text>
+          <Switch
+            trackColor={{
+              false: pallets.grey,
+              true: `${pallets.primary}99`,
+            }}
+            thumbColor={enabled ? pallets.white : pallets.darkGrey}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={() => {
+              setEnabled(prev => !prev);
+            }}
+            value={enabled}
+            style={{ transform: [{ scale: 0.65 }] }}
+          />
+        </View>
+        <Image
+          source={require('../../assets/images/app/card_bg.png')}
+          style={styles.imageBg}
+        />
+      </TouchableOpacity>
+    );
+  }
 
   return (
     <View

@@ -1,6 +1,16 @@
 import { Alert } from 'react-native';
 
-import { ActionText, Container, Divider, Form, FormPin, Submit, Title } from 'components';
+import {
+  ActionText,
+  Container,
+  Divider,
+  Form,
+  FormPin,
+  Header,
+  Submit,
+  Title,
+  VirtualScroll,
+} from 'components';
 import { layout } from 'constant';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
 import {
@@ -34,7 +44,9 @@ export default function AwacashValidateAccountOTP({
       reset();
       navigation.navigate('AwacashSignUp', {
         accountId: params.accountId,
+        firstName: params.firstName,
         hash: data?.data || '',
+        lastName: params.lastName,
       });
     },
   });
@@ -50,40 +62,45 @@ export default function AwacashValidateAccountOTP({
   });
 
   return (
-    <Container header>
-      <Title
-        title={`Validate Account ${'\n'}Number`}
-        subtitle="Enter the OTP sent sent to your phone"
-      />
-      <Form
-        validationSchema={otpValidationSchema}
-        initialValues={{ otp: '' }}
-        onSubmit={({ otp }) => {
-          resendQuery.reset();
-          verifyAccount({
-            code: otp,
-            hash: resendQuery.data?.data.hash || params.hash,
-          });
-        }}>
-        <FormPin name="otp" cellCount={6} />
-        <Divider />
-        <Submit
-          label="Continue"
-          marginBottom={spacing.m}
-          {...{ isLoading }}
-          disabled={resendQuery.isLoading}
-        />
-        <Divider space="s" />
-        <ActionText
-          action="Resend Code"
-          question="I didn't receive code?"
-          onPress={() => {
-            resendToken({
-              accountNumber: params.accountNumber,
-            });
-          }}
-        />
-      </Form>
-    </Container>
+    <>
+      <Header />
+      <VirtualScroll>
+        <Container>
+          <Title
+            title={`Validate Account ${'\n'}Number`}
+            subtitle="Enter the OTP sent sent to your phone"
+          />
+          <Form
+            validationSchema={otpValidationSchema}
+            initialValues={{ otp: '' }}
+            onSubmit={({ otp }) => {
+              resendQuery.reset();
+              verifyAccount({
+                code: otp,
+                hash: resendQuery.data?.data.hash || params.hash,
+              });
+            }}>
+            <FormPin name="otp" cellCount={6} />
+            <Divider />
+            <Submit
+              label="Continue"
+              marginBottom={spacing.m}
+              {...{ isLoading }}
+              disabled={resendQuery.isLoading}
+            />
+            <Divider space="s" />
+            <ActionText
+              action="Resend Code"
+              question="I didn't receive code?"
+              onPress={() => {
+                resendToken({
+                  accountNumber: params.accountNumber,
+                });
+              }}
+            />
+          </Form>
+        </Container>
+      </VirtualScroll>
+    </>
   );
 }

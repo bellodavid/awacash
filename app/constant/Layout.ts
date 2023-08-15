@@ -28,6 +28,7 @@ export default {
     cardHeight: 175,
     cardRadius: 8,
     cardWidth: width - 16 * 4,
+    cardWidthMax: width - 16 * 2,
   },
   dimension: {
     isLandscape: height < width,
@@ -63,12 +64,17 @@ export default {
   },
   misc: {
     avatar: 32,
+    avatarLarge: 80,
     boxLayout: 80,
     icon: 24,
     pagination: 40,
     pill: 48,
     toastHeight: 100,
     width: 70,
+  },
+  numpad: {
+    btnHeight: medium ? 55 : 50,
+    inputHeight: 50,
   },
   numpad: {
     btnHeight: medium ? 55 : 50,

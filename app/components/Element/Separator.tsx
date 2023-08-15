@@ -1,20 +1,19 @@
 import { StyleSheet, View } from 'react-native';
 
-import { useTheme } from 'hooks';
+import { pallets } from 'constant';
 
 interface SeparatorProps {
   width?: `${number}%`;
+  color?: string;
 }
 
-function Separator({ width = '90%' }: SeparatorProps): JSX.Element | null {
-  const { color } = useTheme();
-
+function Separator({ width = '90%', color }: SeparatorProps): JSX.Element | null {
   return (
     <View
       style={[
         styles.separator,
         {
-          backgroundColor: `${color.grey}`,
+          backgroundColor: color || pallets.grey,
           width,
         },
       ]}

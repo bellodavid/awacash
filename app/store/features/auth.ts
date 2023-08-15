@@ -1,8 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { authEndpoints } from 'service';
+import { authEndpoints, customerEndpoints } from 'service';
 
 const initialState: AuthState = {
+  accounts: [],
   balance: undefined,
   isAuthenticated: false,
   token: undefined,
@@ -33,20 +34,40 @@ const { actions, reducer } = createSlice({
         state.token = payload.data.token;
       },
     );
-    // builder.addMatcher(
-    //   customerEndpoints.getBalance.matchFulfilled,
-    //   (state, { payload }) => {
-    //     state.balance = payload.data.balance;
-    //   },
-    // );
-    // builder.addMatcher(
-    //   customerEndpoints.getProfile.matchFulfilled,
-    //   (state, { payload }) => {
-    //     devLogger(payload.data, 'Profile Refetch');
+    builder.addMatcher(
+      customerEndpoints.getBalance.matchFulfilled,
+      (state, { payload }) => {
+        state.balance = payload.data.balance;
 
-    //     state.user = payload.data;
-    //   },
-    // );
+        if (state.accounts && state.accounts?.length > 1) {
+          console.log('GET_BALANCE', payload.data.balance);
+          state.accounts = [
+            ...state.accounts,
+            {
+              accountNumber: '',
+              accountStatus: '',
+              accountType: '',
+              availableBalance: String(payload.data.balance),
+              ledgerBalance: '',
+              withdrawableAmount: '',
+            },
+          ];
+        }
+      },
+    );
+    builder.addMatcher(
+      customerEndpoints.getAccounts.matchFulfilled,
+      (state, { payload }) => {
+        console.log('🚀 ~ file: auth.ts:39 ~ payload:', payload.data);
+        state.accounts = payload.data;
+      },
+    );
+    builder.addMatcher(
+      customerEndpoints.getProfile.matchFulfilled,
+      (state, { payload }) => {
+        state.user = payload.data;
+      },
+    );
   },
   initialState,
   name: 'auth',

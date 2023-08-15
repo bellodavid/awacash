@@ -10,6 +10,7 @@ type AuthState = {
   user?: User | null;
   token?: string | null;
   balance?: number | null;
+  accounts: CustomerAccountData[];
 };
 
 type PersistedState = {

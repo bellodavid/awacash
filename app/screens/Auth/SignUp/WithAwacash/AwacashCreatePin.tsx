@@ -19,7 +19,6 @@ export default function AwacashCreatePin({
           });
         }
       }}
-      fingerprint
       secured
     />
   );

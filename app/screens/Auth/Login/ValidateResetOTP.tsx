@@ -8,6 +8,7 @@ import {
   Header,
   Submit,
   Title,
+  VirtualScroll,
 } from 'components';
 import { AuthRoutes, StackNavigationProps } from 'navigation';
 import {
@@ -49,41 +50,44 @@ export default function ValidateResetOTP({
   return (
     <>
       <Header />
-      <Container>
-        <Title title="Verify Email" />
-        <Form
-          {...{ validationSchema }}
-          initialValues={{
-            code: '',
-          }}
-          onSubmit={({ code }) => {
-            reset();
-            sendQuery.reset();
-            verify({
-              code,
-              hash: sendQuery.data?.data || params.hash,
-            });
-          }}>
-          <FormPin name="code" cellCount={6} />
-          <Footer>
-            <Submit label="Verify" {...{ isLoading }} />
+      <VirtualScroll>
+        <Container>
+          <Title title="Verify Email" />
+          <Form
+            {...{ validationSchema }}
+            initialValues={{
+              code: '',
+            }}
+            onSubmit={({ code }) => {
+              reset();
+              sendQuery.reset();
+              verify({
+                code,
+                hash: sendQuery.data?.data || params.hash,
+              });
+            }}>
+            <FormPin name="code" cellCount={6} />
             <Divider />
-            {!isLoading && (
-              <Button
-                isLoading={sendQuery.isLoading}
-                label="Resend OTP"
-                variant="secondary"
-                onPress={() => {
-                  reset();
-                  sendQuery.reset();
-                  sendCode({ email: params.email });
-                }}
-              />
-            )}
-            <Divider />
-          </Footer>
-        </Form>
-      </Container>
+            <Footer>
+              <Submit label="Verify" {...{ isLoading }} />
+              <Divider space="s" />
+              {!isLoading && (
+                <Button
+                  isLoading={sendQuery.isLoading}
+                  label="Resend OTP"
+                  variant="secondary"
+                  onPress={() => {
+                    reset();
+                    sendQuery.reset();
+                    sendCode({ email: params.email });
+                  }}
+                />
+              )}
+              <Divider />
+            </Footer>
+          </Form>
+        </Container>
+      </VirtualScroll>
     </>
   );
 }

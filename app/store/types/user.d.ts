@@ -33,3 +33,12 @@ interface UserResponse {
   errors: string[];
   data: Response;
 }
+
+interface CustomerAccountData {
+  accountNumber: string;
+  accountStatus: string;
+  accountType: string;
+  availableBalance: string;
+  ledgerBalance: string;
+  withdrawableAmount: string;
+}

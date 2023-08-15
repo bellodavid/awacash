@@ -51,7 +51,6 @@ export default function AwacashConfirmPin({
           }
         }
       }}
-      fingerprint
       secured
       isLoading={isLoading}
     />

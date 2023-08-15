@@ -18,7 +18,7 @@ const api = createApi({
     },
   }),
   endpoints: () => ({}),
-  tagTypes: ['GetProfile', 'Balance'],
+  tagTypes: ['GetProfile', 'Balance', 'Accounts'],
 });
 
 export const {

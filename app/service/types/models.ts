@@ -245,6 +245,8 @@ declare module 'api-response' {
   export interface SendAccountVerificationResponse {
     accountId: string;
     hash: string;
+    lastName: string;
+    firstName: string;
   }
 }
 declare module 'transferModels' {

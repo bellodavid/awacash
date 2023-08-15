@@ -11,6 +11,8 @@ const password = Yup.string()
   .min(8, 'Password must be at least 8 characters long')
   .label('Password');
 
+const password2 = Yup.string().required('Please enter your password').label('Password');
+
 const email = Yup.string()
   .required('Please enter your email')
   .email('Email is invalid')
@@ -61,7 +63,7 @@ export const emailValidationSchema = Yup.object().shape({
 
 export const loginValidationSchema = Yup.object().shape({
   email,
-  password,
+  password: password2,
 });
 
 export const signUpValidationSchema = Yup.object().shape({
