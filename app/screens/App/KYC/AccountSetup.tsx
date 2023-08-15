@@ -1,52 +1,42 @@
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 
 import { kycSection } from './Data';
-import ProcessCard from './Components/ProcessCard';
+import { ProcessCard } from './Components';
 
-import { AppRoutes, KYCRoutes, RootNavigationProp } from 'navigation';
-import {
-  AltHeader,
-  BackgroundGradient,
-  Button,
-  Container,
-  SheetContainer,
-  VirtualScroll,
-} from 'components';
+import { KYCRoutes, StackNavigationProps } from 'navigation';
+import { AltHeader, Button, Container, Divider, VirtualScroll } from 'components';
 
 export default function AccountSetup({
   navigation,
-}: RootNavigationProp<AppRoutes, KYCRoutes, 'AccountSetup'>): JSX.Element {
+}: StackNavigationProps<KYCRoutes, 'AccountSetup'>): JSX.Element {
   return (
-    <BackgroundGradient>
-      <AltHeader transparent iconColor="white" label="Account Set Up" />
-      <SheetContainer>
-        <VirtualScroll>
-          <Container>
-            <FlatList
-              data={kycSection}
-              showsVerticalScrollIndicator={false}
-              renderItem={({ item }) => {
-                return (
-                  <ProcessCard
-                    onPress={() => {
-                      if (item.route) {
-                        navigation.navigate('KYCStack', item.route);
-                      }
-                    }}
-                    label={item.label}
-                    icon={item.icon}
-                    button={item.button}
-                    iconColor={item.color}
-                  />
-                );
-              }}
-            />
-            <View>
-              <Button label="Continue" />
-            </View>
-          </Container>
-        </VirtualScroll>
-      </SheetContainer>
-    </BackgroundGradient>
+    <>
+      <AltHeader iconColor="white" label="Account Set Up" />
+      <VirtualScroll>
+        <Container backgroundColor="white">
+          <FlatList
+            data={kycSection}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => {
+              return (
+                <ProcessCard
+                  onPress={() => {
+                    if (item.route) {
+                      navigation.navigate(item.route);
+                    }
+                  }}
+                  label={item.label}
+                  icon={item.icon}
+                  button={'Not Done'}
+                  iconColor={item.color}
+                />
+              );
+            }}
+          />
+          <Divider />
+          <Button label="Continue" />
+        </Container>
+      </VirtualScroll>
+    </>
   );
 }

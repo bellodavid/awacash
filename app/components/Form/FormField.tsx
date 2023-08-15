@@ -17,6 +17,7 @@ export interface FieldKeys {
   currentPassword: string;
   currentPin: string;
   date: string;
+  dob: string;
   email: string;
   firstName: string;
   issue: string;

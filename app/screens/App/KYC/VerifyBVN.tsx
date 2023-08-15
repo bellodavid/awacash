@@ -1,5 +1,3 @@
-import { Alert } from 'react-native';
-
 import {
   ActionText,
   Container,
@@ -10,7 +8,8 @@ import {
   Title,
 } from 'components';
 import { KYCRoutes, StackNavigationProps } from 'navigation';
-const message = 'I am here';
+import { verifyBVNValidationSchema } from 'utils';
+
 export default function VerifyBVN({
   navigation,
 }: StackNavigationProps<KYCRoutes, 'VerifyBVN'>): JSX.Element {
@@ -18,34 +17,22 @@ export default function VerifyBVN({
     <Container header>
       <Title title="Verify BVN" subtitle="Please fill this form to verify your BVN." />
       <Form
+        validationSchema={verifyBVNValidationSchema}
         initialValues={{
           bvn: '',
+          dob: '',
         }}
         onSubmit={value => {
           console.log(value);
-          navigation.navigate('KYCSuccess', { message });
-          Alert.alert('', 'Receive OTP for BVN verification?', [
-            {
-              isPreferred: true,
-              onPress() {
-                navigation.navigate('ValidateBVN');
-              },
-              style: 'cancel',
-              text: 'Email',
-            },
-            {
-              onPress() {
-                navigation.navigate('ValidateBVN');
-              },
-              text: 'Phone number',
-            },
-          ]);
+          navigation.navigate('KYCSuccess', {
+            message: 'Your BVN has been received and would be verified shortly',
+          });
         }}>
         <FormField label="BVN" name="bvn" placeholder="Enter BVN" />
         <FormField
           rightIcon="calendar"
           label="Date of Birth"
-          name="date"
+          name="dob"
           placeholder="dd/mm/yyyy"
         />
         <Divider />

@@ -15,6 +15,7 @@ interface ProcessCardProp {
   size?: number;
   marginBottom?: number;
 }
+
 export default function ProcessCard({
   label,
   icon,
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   row: {
-    aligntItems: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
   },
 });

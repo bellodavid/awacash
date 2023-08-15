@@ -65,7 +65,6 @@ export default function AltHeader({
           </Text>
         </View>
       </View>
-      <View style={{ backgroundColor, height: spacing.l }} />
     </>
   );
 }

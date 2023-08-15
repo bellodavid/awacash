@@ -10,3 +10,4 @@ export { default as AltHeader } from './AltHeader';
 export { default as SheetContainer } from './SheetContainer';
 export { default as SwirlBackground } from './SwirlBackground';
 export { default as TabHeader } from './TabHeader';
+export { default as BackgroundGradient } from './BackgroundGradient';

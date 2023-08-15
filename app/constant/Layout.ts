@@ -76,10 +76,6 @@ export default {
     btnHeight: medium ? 55 : 50,
     inputHeight: 50,
   },
-  numpad: {
-    btnHeight: medium ? 55 : 50,
-    inputHeight: 50,
-  },
   spacing: {
     l: 24,
     m: 16,

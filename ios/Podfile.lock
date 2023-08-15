@@ -25,6 +25,8 @@ PODS:
     - ExpoModulesCore
   - ExpoKeepAwake (12.0.1):
     - ExpoModulesCore
+  - ExpoLinearGradient (12.1.2):
+    - ExpoModulesCore
   - ExpoLocalAuthentication (13.3.0):
     - ExpoModulesCore
   - ExpoModulesCore (1.2.7):
@@ -518,6 +520,7 @@ DEPENDENCIES:
   - ExpoCrypto (from `../node_modules/expo-crypto/ios`)
   - ExpoImagePicker (from `../node_modules/expo-image-picker/ios`)
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
+  - ExpoLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
   - ExpoLocalAuthentication (from `../node_modules/expo-local-authentication/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - EXSecureStore (from `../node_modules/expo-secure-store/ios`)
@@ -635,6 +638,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-image-picker/ios"
   ExpoKeepAwake:
     :path: "../node_modules/expo-keep-awake/ios"
+  ExpoLinearGradient:
+    :path: "../node_modules/expo-linear-gradient/ios"
   ExpoLocalAuthentication:
     :path: "../node_modules/expo-local-authentication/ios"
   ExpoModulesCore:
@@ -737,6 +742,7 @@ SPEC CHECKSUMS:
   ExpoCrypto: 9105610a09cd6290b900bd82fc5d190e489125a3
   ExpoImagePicker: 270dea232b3a072d981dd564e2cafc63a864edb1
   ExpoKeepAwake: 69f5f627670d62318410392d03e0b5db0f85759a
+  ExpoLinearGradient: 8eaab76b7f55c612ed8348c8be8c2a18a9b4529f
   ExpoLocalAuthentication: 32919307c66fb3661caefa07e7811a95a7539d7b
   ExpoModulesCore: 653958063a301098b541ae4dfed1ac0b98db607b
   EXSecureStore: e8923258361cc406d0401af380f12bd05b2b720f

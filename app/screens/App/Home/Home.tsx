@@ -105,6 +105,8 @@ export default function Home({
                       onPress={() => {
                         if (item.route) {
                           navigation.navigate('HomeStack', item.route);
+                        } else {
+                          navigation.navigate('KYCStack', { screen: 'AccountSetup' });
                         }
                       }}
                       style={[styles.pill, { backgroundColor: item.color }]}>

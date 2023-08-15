@@ -98,3 +98,11 @@ export const resetPasswordValidationSchema = Yup.object().shape({
 export const accountNumberValidationSchema = Yup.object().shape({
   accountNumber,
 });
+
+export const verifyBVNValidationSchema = Yup.object().shape({
+  bvn: Yup.string()
+    .required('Please enter your BVN')
+    .min(11, 'BVN must be at least 11 digits long')
+    .label('BVN'),
+  dob: Yup.string().required('Please select your Date of birth').label('Date of Birth'),
+});
