@@ -7,10 +7,6 @@ import { lottie } from 'assets';
 import { KYCRoutes, StackNavigationProps } from 'navigation';
 import { layout } from 'constant';
 
-export type KYCRoutesParamList = {
-  [key in keyof KYCRoutes['KYCSuccess']]: undefined;
-};
-
 export default function KYCSuccess({
   route,
 }: StackNavigationProps<KYCRoutes, 'KYCSuccess'>): JSX.Element {
